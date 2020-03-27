@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
 
+import { AngularFontAwesomeModule } from "angular-font-awesome";
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EntryDetailsComponent } from './entrydetails/entryDetails.component';
@@ -23,14 +25,15 @@ import { SummaryPannelComponent } from './summary-pannel/summary-pannel.componen
     EntryCategoryComponent,
     EntryItemComponent,
     HomeComponent,
-    SummaryPannelComponent,
+    SummaryPannelComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "inventory"),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFontAwesomeModule
   ],
   providers: [EnrtyCompanyService],
   bootstrap: [AppComponent]

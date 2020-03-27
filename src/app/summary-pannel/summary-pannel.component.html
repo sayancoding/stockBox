@@ -1,41 +1,47 @@
-<div class="mt-10 flex justify-center flex-wrap">
+<div class="mt-10 flex flex-wrap">
   <a [routerLink]="['./entryZone']">
     <div
-      class="m-4 text-white text-center px-12 py-8 rounded-sm"
-      id="entryZone"
+      class="m-2 w-48 shadow-xl bg-red-400 text-white text-center px-12 py-8 rounded-sm"
+      
     >
       <p class="text-center text-3xl">
-        <i class="fa fa-database"></i>
+        <fa name="plug"></fa>
       </p>
       <p>
         Entry Zone
       </p>
     </div>
   </a>
-  <div class="bg-indigo-500 m-2 text-white text-center px-12 py-8 rounded-sm">
-    <p class="text-center text-3xl">
-      <i class="fa fa-database"></i>
-    </p>
-    <p>
-      Entry Zone
-    </p>
-  </div>
-  <div class="bg-indigo-500 m-4 text-white text-center px-12 py-8 rounded-sm">
-    <p class="text-center text-3xl">
-      <i class="fa fa-database"></i>
-    </p>
-    <p>
-      Entry Zone
-    </p>
-  </div>
-  <div class="bg-indigo-500 m-4 text-white text-center px-12 py-8 rounded-sm">
-    <p class="text-center text-3xl">
-      <i class="fa fa-database"></i>
-    </p>
-    <p>
-      Entry Zone
-    </p>
-  </div>
+  <a [routerLink]="['./outlets']">
+    <div class="bg-yellow-400 w-48 m-2 shadow-xl text-white text-center px-12 py-8 rounded-sm">
+      <p class="text-center text-3xl">
+        <fa name="money"></fa>
+      </p>
+      <p>
+        Outlets
+      </p>
+    </div>
+  </a>
+  <a [routerLink]="['./debit-credit']">
+    <div class="bg-indigo-400 w-48 m-2 shadow-xl text-white text-center px-12 py-8 rounded-sm">
+      <p class="text-center text-3xl">
+        <fa name="credit-card"></fa>
+      </p>
+      <p>
+        Debit-Credit
+      </p>
+    </div>
+  </a>
+  <a [routerLink]="['./stock']">
+    <div class="bg-blue-400 m-2 w-48 shadow-xl text-white text-center px-12 py-8 rounded-sm">
+      <p class="text-center text-3xl">
+        <fa name="database"></fa>
+      </p>
+      <p>
+        Stock
+      </p>
+    </div>
+  </a>
 </div>
 <router-outlet></router-outlet>
 
