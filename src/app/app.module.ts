@@ -12,6 +12,7 @@ import { EntryCategoryComponent } from './entrydetails/entry-category/entry-cate
 import { EntryItemComponent } from './entrydetails/entry-item/entry-item.component';
 import { environment } from '../environments/environment';
 import { EnrtyCompanyService } from './service/enrty-company.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EnrtyCompanyService } from './service/enrty-company.service';
     EntryDetailsComponent,
     EntryCompanyComponent,
     EntryCategoryComponent,
-    EntryItemComponent
+    EntryItemComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
