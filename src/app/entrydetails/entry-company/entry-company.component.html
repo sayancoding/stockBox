@@ -11,7 +11,8 @@
   <option [value]="company.name" *ngFor="let company of companies">{{company.name}}</option>
 </select>
       <div *ngFor="let company of companies">
-        <p>{{company.name}}</p>
+        <p (click)="deleteComp($event,company)" >{{company.name}}</p>
+        <!-- <p>{{company.id}}</p> -->
       </div>
     </div>
   </div>

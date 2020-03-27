@@ -14,7 +14,6 @@ export class EntryCompanyComponent implements OnInit {
   constructor(private _comanyNameService: EnrtyCompanyService) {}
   getCompanyName() {
     this._comanyNameService.getCompanyName().subscribe(cmp => {
-      // console.log(cmp)
       this.companies = cmp;
       console.log(this.companies);
     });
@@ -37,5 +36,10 @@ export class EntryCompanyComponent implements OnInit {
     });
 
     this.getCompanyName();
+  }
+
+  deleteComp(event,cmp)
+  {
+    this._comanyNameService.deleteCompany(cmp);
   }
 }
