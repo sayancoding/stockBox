@@ -1,4 +1,42 @@
-<div class="container">
+<div class="mt-4 ml-6">
+  <div class="text-2xl my-2">
+    Company Details
+  </div>
+  <div>
+    <form [formGroup]="entryCompanyName" (ngSubmit)="onSubmit()">
+      <input
+        placeholder="Company name.."
+        class="block bg-yellow-200 my-3 h-10 w-1/3 px-2 rounded-sm"
+        formControlName="companyName"
+        id="companyName"
+      />
+      <p class="error" *ngIf="entryCompanyName.get('companyName').errors?.required">Company name required !</p>
+      <p class="error" *ngIf="entryCompanyName.get('companyName').errors?.pattern">need correct name !</p>
+      
+      <input
+        placeholder="Company address.."
+        class="block bg-yellow-200 my-3 h-10 w-1/2 px-2 rounded-sm"
+        formControlName="companyAddress"
+        id="companyAddress"
+      />
+      <p class="error">Address required !</p>
+
+      <input
+        placeholder="Contact No.."
+        class="block bg-yellow-200 my-3 h-10 w-1/5 px-2 rounded-sm"
+        formControlName="companyContact"
+        id="companyContact"
+      />
+      <p class="error" *ngIf="entryCompanyName.get('companyContact').errors?.required">Contact required !</p>
+      <p class="error" *ngIf="entryCompanyName.get('companyContact').errors?.pattern">need correct number !</p>
+      <p class="error" *ngIf="entryCompanyName.get('companyContact').errors?.minlength">should be minimum 10 !</p>
+
+      <input [disabled]="!entryCompanyName.valid" type="submit" class="bg-indigo-600 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg" value="Store" />
+    </form>
+  </div>
+</div>
+
+<!-- <div class="container">
   <div class="row mt-4">
     <div class="col-md-4">
       <form [formGroup]="entryCompanyName" (ngSubmit)="onSubmit()" >
@@ -6,14 +44,12 @@
         <input type="submit" class="btn btn-warning" value="add">
 
       </form>
-      <!-- {{companies | json }} -->
       <select id="company" >
   <option [value]="company.name" *ngFor="let company of companies">{{company.name}}</option>
 </select>
       <div *ngFor="let company of companies">
         <p (click)="deleteComp($event,company)" >{{company.name}}</p>
-        <!-- <p>{{company.id}}</p> -->
       </div>
     </div>
   </div>
-</div>
+</div> -->

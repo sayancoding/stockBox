@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EnrtyCompanyService } from "src/app/service/enrty-company.service";
 import { Company } from "src/app/model/enrtyCompany.model";
 
@@ -23,23 +23,44 @@ export class EntryCompanyComponent implements OnInit {
   }
 
   entryCompanyName = new FormGroup({
-    companyName: new FormControl(null)
+    companyName: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z]+$/)
+    ]),
+    companyAddress: new FormControl(null, [Validators.required]),
+    companyContact: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(/^[0-9]\d*$/),
+      Validators.minLength(10)
+    ])
   });
 
   onSubmit() {
-    console.log({ name: this.entryCompanyName.get("companyName").value });
+    console.log({
+      name: this.entryCompanyName.get("companyName").value,
+      address: this.entryCompanyName.get("companyAddress").value,
+      contact: this.entryCompanyName.get("companyContact").value
+    });
     this.addToFirebase();
+
+    // alert(`company details are stored 🤘`)
   }
   addToFirebase() {
     this._comanyNameService.addCompany({
-      name: this.entryCompanyName.get("companyName").value
+      name: this.entryCompanyName.get("companyName").value,
+      address: this.entryCompanyName.get("companyAddress").value,
+      contact: this.entryCompanyName.get("companyContact").value
     });
 
     this.getCompanyName();
+    this.entryCompanyName.reset();
+    setTimeout(() => {
+      this.entryCompanyName.reset();
+      alert(`company details are stored 🤘`);
+    }, 1000);
   }
 
-  deleteComp(event,cmp)
-  {
+  deleteComp(event, cmp) {
     this._comanyNameService.deleteCompany(cmp);
   }
 }
