@@ -6,15 +6,19 @@ import { SummaryPannelComponent } from './summary-pannel/summary-pannel.componen
 
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo:"/home" },
-  { path: "home",
+  { path: "", pathMatch: "full", redirectTo: "/home" },
+  {
+    path: "home",
     component: HomeComponent,
-    children:[
-      { path: "", component: SummaryPannelComponent},
-      { path: "entryZone", component: EntryDetailsComponent },
-      { path: "show", component: EntryDetailsComponent }
+    children: [
+      {
+        path: "",
+        component: SummaryPannelComponent,
+        children: [{ path: "entryZone", component: EntryDetailsComponent }
+      ]
+      }
     ]
-  },
+  }
 ];
 
 @NgModule({
