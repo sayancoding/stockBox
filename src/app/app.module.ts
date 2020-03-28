@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
 
 import { AngularFontAwesomeModule } from "angular-font-awesome";
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,9 +32,11 @@ import { SummaryPannelComponent } from './summary-pannel/summary-pannel.componen
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "inventory"),
     AngularFirestoreModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    Ng2SearchPipeModule
   ],
   providers: [EnrtyCompanyService],
   bootstrap: [AppComponent]

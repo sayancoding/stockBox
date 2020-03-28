@@ -23,3 +23,16 @@ input[type='submit']:disabled
   background-color: rgb(168, 168, 168);
   cursor: not-allowed;
 }
+
+.bg-img
+{
+  position: relative;
+}
+.bg-img img{
+  float: right;
+}
+
+table
+{
+  width: 35rem;
+}

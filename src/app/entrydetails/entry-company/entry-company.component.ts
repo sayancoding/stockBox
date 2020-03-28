@@ -10,6 +10,7 @@ import { Company } from "src/app/model/enrtyCompany.model";
 })
 export class EntryCompanyComponent implements OnInit {
   companies: Company[];
+  term:string;
 
   constructor(private _comanyNameService: EnrtyCompanyService) {}
   getCompanyName() {
