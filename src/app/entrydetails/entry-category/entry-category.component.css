@@ -1,0 +1,15 @@
+input[type='submit']:disabled
+{
+  background-color: rgb(168, 168, 168);
+  cursor: not-allowed;
+}
+
+p.error
+{
+  display: none;
+}
+input.ng-touched.ng-invalid + p.error {
+  display: block;
+  color: rgb(255, 125, 125);
+  transition: 1s ease-in-out;
+}

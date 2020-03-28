@@ -1,1 +1,22 @@
-<p>entry-category works!</p>
+<div class="mt-4 ml-6">
+  <div class="text-2xl my-2">
+    Products Category
+  </div>
+  <div>
+    <form [formGroup]='entryCategory' (ngSubmit)="onSubmit()" >
+      <input
+        type="text"
+        placeholder="product category.."
+        class="block rounded bg-yellow-200 my-3 px-2 py-3 w-1/3"
+        formControlName="categoryName"
+      />
+      <p class="error" *ngIf="entryCategory.get('categoryName').errors?.required">Category required!</p>
+      <input
+        [disabled]="!entryCategory.valid"
+        type="submit"
+        class="bg-indigo-700 text-white px-4 py-1 mt-4 rounded shadow-sm hover:shadow-lg cursor-pointer"
+        value="Store"
+      />
+    </form>
+  </div>
+</div>
