@@ -15,12 +15,16 @@
       <p>Product Category</p>
     </div>
   </a>
-  <div class="bg-teal-200 text-left shadow-md rounded-sm px-4 py-4 m-2">
-    <p class="text-xl"><fa name="adn"></fa></p>
-    <p>Product Details</p>
-  </div>
-  <div class="bg-teal-200 text-left shadow-md rounded-sm px-4 py-4 m-2">
-    <p class="text-xl"><fa name="user"></fa></p>
-    <p>Retailer Details</p>
-  </div>
+  <a [routerLink]="[ '/home/product-entry' ]">
+    <div class="bg-teal-200 text-left shadow-md rounded-sm px-4 py-4 m-2">
+      <p class="text-xl"><fa name="adn"></fa></p>
+      <p>Product Details</p>
+    </div>
+  </a>
+  <a [routerLink]="[ '/home/customer-entry' ]">
+    <div class="bg-teal-200 text-left shadow-md rounded-sm px-4 py-4 m-2">
+      <p class="text-xl"><fa name="user"></fa></p>
+      <p>Retailer Details</p>
+    </div>
+  </a>
 </div>

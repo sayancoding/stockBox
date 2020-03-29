@@ -5,6 +5,7 @@ import { EntryDetailsComponent } from './entrydetails/entryDetails.component';
 import { SummaryPannelComponent } from './summary-pannel/summary-pannel.component';
 import { EntryCompanyComponent } from './entrydetails/entry-company/entry-company.component';
 import { EntryCategoryComponent } from './entrydetails/entry-category/entry-category.component';
+import { EntryItemComponent } from './entrydetails/entry-item/entry-item.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: "category-entry",
         component: EntryCategoryComponent
+      },
+      {
+        path: "product-entry",
+        component: EntryItemComponent
       }
     ]
   }
