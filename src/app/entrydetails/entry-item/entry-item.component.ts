@@ -5,6 +5,7 @@ import { Company } from 'src/app/model/enrtyCompany.model';
 import { Category } from 'src/app/model/entryCategory.model';
 import { EnrtyCompanyService } from 'src/app/service/enrty-company.service';
 import { EntryCategoryService } from 'src/app/service/entry-category.service';
+import { EntryProductService } from 'src/app/service/entry-product.service';
 
 @Component({
   selector: "app-entry-item",
@@ -14,6 +15,7 @@ import { EntryCategoryService } from 'src/app/service/entry-category.service';
 export class EntryItemComponent implements OnInit {
   companies: Company[];
   categories: Category[];
+  products:Product[];
 
   product: Product;
   public price: any;
@@ -27,7 +29,8 @@ export class EntryItemComponent implements OnInit {
 
   constructor(
     private _companyName: EnrtyCompanyService,
-    private _categoryName: EntryCategoryService
+    private _categoryName: EntryCategoryService,
+    private _productDetails: EntryProductService
   ) {
     this._companyName.getCompanyName().subscribe(cmp => {
       this.companies = cmp;
@@ -37,13 +40,15 @@ export class EntryItemComponent implements OnInit {
       this.categories = cat;
       this.showSpinner = false;
     });
+
+    this._productDetails.getProducts().subscribe(prod => {
+      this.products = prod;
+      console.log(this.products);
+      this.showSpinner = false;
+    }); 
   }
 
-  ngOnInit() {
-    // setTimeout(() => {
-    //   this.showSpinner = false
-    // }, 1000);
-  }
+  ngOnInit() {}
 
   entryProductDetails = new FormGroup({
     productName: new FormControl(null, [Validators.required]),
@@ -71,9 +76,11 @@ export class EntryItemComponent implements OnInit {
     this.showSpinner = true
     this.product = this.entryProductDetails.value;
     console.log(this.product);
-    setTimeout(() => {
-      this.showSpinner = false
-    }, 500);
+    this._productDetails.addProduct(this.product);
+      setTimeout(() => {
+        alert(`your product added successfully 🤷‍♀️`);
+        this.entryProductDetails.reset();
+      }, 500); 
   }
 
   getTotalPrice() {
@@ -85,9 +92,5 @@ export class EntryItemComponent implements OnInit {
     let total: number = totalPer * parseInt(this.quantity);
     this.total = total;
     this.total = parseFloat(this.total).toFixed(2);
-
-    if (typeof this.price !== undefined && typeof this.gst !== undefined) {
-      console.log(totalPer, parseFloat(this.total).toFixed(2));
-    }
   }
 }

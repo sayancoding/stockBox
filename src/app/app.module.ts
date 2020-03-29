@@ -19,6 +19,7 @@ import { HomeComponent } from "./home/home.component";
 import { SummaryPannelComponent } from "./summary-pannel/summary-pannel.component";
 import { EntryCategoryService } from "./service/entry-category.service";
 import { SpinnerComponent } from './spinner/spinner.component';
+import { EntryProductService } from './service/entry-product.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     AngularFontAwesomeModule,
     Ng2SearchPipeModule
   ],
-  providers: [EnrtyCompanyService, EntryCategoryService],
+  providers: [EnrtyCompanyService, EntryCategoryService,EntryProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
