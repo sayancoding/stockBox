@@ -33,7 +33,7 @@ export class EntryItemComponent implements OnInit {
 
   onSubmit() {
     this.product = this.entryProductDetails.value;
-    console.log(this.entryProductDetails.value, this.product);
+    console.log(this.product);
   }
 
   getTotalPrice() {
