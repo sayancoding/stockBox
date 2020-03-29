@@ -1,0 +1,33 @@
+<svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2055.5 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #f1fbff;
+      }
+
+      .cls-3 {
+        fill: rgba(241,253,255,0.52);
+      }
+
+      .cls-4 {
+        fill: rgba(241,251,255,0.58);
+      }
+
+      .cls-5 {
+        fill: rgba(248,251,255,0.61);
+      }
+    </style>
+  </defs>
+  <rect id="Rectangle_1" data-name="Rectangle 1" class="cls-1" width="1920" height="1080"/>
+  <rect id="Rectangle_2" data-name="Rectangle 2" class="cls-2" width="258" height="50" rx="25" transform="matrix(1, 0.017, -0.017, 1, 1290.727, 345.734)"/>
+  <rect id="Rectangle_4" data-name="Rectangle 4" class="cls-3" width="258" height="50" rx="25" transform="matrix(1, 0.017, -0.017, 1, 873.727, 569.734)"/>
+  <rect id="Rectangle_6" data-name="Rectangle 6" class="cls-3" width="258" height="50" rx="25" transform="matrix(1, 0.017, -0.017, 1, 1686.727, 789.734)"/>
+  <rect id="Rectangle_3" data-name="Rectangle 3" class="cls-4" width="317" height="40" rx="20" transform="matrix(1, 0.017, -0.017, 1, 1348.02, 386.74)"/>
+  <rect id="Rectangle_5" data-name="Rectangle 5" class="cls-4" width="317" height="40" rx="20" transform="matrix(1, 0.017, -0.017, 1, 925.548, 601.474)"/>
+  <rect id="Rectangle_7" data-name="Rectangle 7" class="cls-4" width="317" height="40" rx="20" transform="matrix(1, 0.017, -0.017, 1, 1738.548, 821.474)"/>
+  <ellipse id="Ellipse_1" data-name="Ellipse 1" class="cls-5" cx="79.5" cy="75.5" rx="79.5" ry="75.5" transform="translate(1549 195)"/>
+</svg>
