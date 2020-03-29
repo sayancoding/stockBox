@@ -5,7 +5,8 @@ export interface Product
   productCategory?:string,
   productCompany?:string,
   productQuantity?:string,
-  productPrice?:string,
-  productGST?:string,
-  productTotalPrice?:string
+  productPrice?:number,
+  productGSTPrice?:number,
+  productGST?:number,
+  productTotalPrice?:number
 }

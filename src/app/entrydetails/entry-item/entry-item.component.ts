@@ -10,7 +10,11 @@ import { Product } from 'src/app/model/entryProduct.model';
 export class EntryItemComponent implements OnInit {
   product: Product;
   public price: any;
-  gst: any = this.price + 1;
+  public gst: any;
+  public quantity: any;
+
+  public total: any;
+  public gstPrice: any;
 
   constructor() {}
 
@@ -22,8 +26,9 @@ export class EntryItemComponent implements OnInit {
     productCompany: new FormControl(null, [Validators.required]),
     productQuantity: new FormControl(null, [Validators.required]),
     productPrice: new FormControl(null, [Validators.required]),
+    productTotalGSTPrice: new FormControl(this.gstPrice),
     productGST: new FormControl(null, [Validators.required]),
-    productTotalPrice: new FormControl(this.gst)
+    productTotalPrice: new FormControl(this.total)
   });
 
   onSubmit() {
@@ -31,8 +36,18 @@ export class EntryItemComponent implements OnInit {
     console.log(this.entryProductDetails.value, this.product);
   }
 
-  getPrice(){
-    this.gst = this.entryProductDetails.get("productPrice");
-    console.log(this.gst)
+  getTotalPrice() {
+    let totalPer: number =
+      parseInt(this.price) + (parseInt(this.price) * parseInt(this.gst)) / 100;
+    this.gstPrice = totalPer;
+    this.gstPrice = parseFloat(this.gstPrice).toFixed(2);
+
+    let total: number = totalPer * parseInt(this.quantity);
+    this.total = total;
+    this.total = parseFloat(this.total).toFixed(2);
+
+    if (typeof this.price !== undefined && typeof this.gst !== undefined) {
+      console.log(totalPer, parseFloat(this.total).toFixed(2));
+    }
   }
 }
