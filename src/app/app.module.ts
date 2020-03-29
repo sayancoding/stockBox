@@ -18,6 +18,7 @@ import { EnrtyCompanyService } from "./service/enrty-company.service";
 import { HomeComponent } from "./home/home.component";
 import { SummaryPannelComponent } from "./summary-pannel/summary-pannel.component";
 import { EntryCategoryService } from "./service/entry-category.service";
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EntryCategoryService } from "./service/entry-category.service";
     EntryCategoryComponent,
     EntryItemComponent,
     HomeComponent,
-    SummaryPannelComponent
+    SummaryPannelComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

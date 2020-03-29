@@ -36,3 +36,12 @@ table
 {
   width: 35rem;
 }
+
+
+#loader
+{
+  padding-top: 4rem;
+  width: 65%;
+  height: 100vh;
+  cursor: no-drop;
+}

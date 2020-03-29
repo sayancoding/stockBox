@@ -12,9 +12,8 @@ import { EntryCategoryService } from 'src/app/service/entry-category.service';
   styleUrls: ["./entry-item.component.css"]
 })
 export class EntryItemComponent implements OnInit {
-
-  companies:Company[];
-  categories:Category[];
+  companies: Company[];
+  categories: Category[];
 
   product: Product;
   public price: any;
@@ -24,21 +23,33 @@ export class EntryItemComponent implements OnInit {
   public total: any;
   public gstPrice: any;
 
-  constructor(private _companyName:EnrtyCompanyService,private _categoryName:EntryCategoryService) {
-    this._companyName.getCompanyName().subscribe(cmp=>{
+  showSpinner:boolean = true;
+
+  constructor(
+    private _companyName: EnrtyCompanyService,
+    private _categoryName: EntryCategoryService
+  ) {
+    this._companyName.getCompanyName().subscribe(cmp => {
       this.companies = cmp;
-    })
-    this._categoryName.getCategoriesName().subscribe(cat=>{
-      this.categories = cat
-    })
+      this.showSpinner = false;
+    });
+    this._categoryName.getCategoriesName().subscribe(cat => {
+      this.categories = cat;
+      this.showSpinner = false;
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // setTimeout(() => {
+    //   this.showSpinner = false
+    // }, 1000);
+  }
 
   entryProductDetails = new FormGroup({
     productName: new FormControl(null, [Validators.required]),
     productCategory: new FormControl(null, [Validators.required]),
     productCompany: new FormControl(null, [Validators.required]),
+    productDate : new FormControl(null,[Validators.required]),
     productQuantity: new FormControl(null, [
       Validators.required,
       Validators.pattern(/^[0-9]\d*$/)
@@ -57,8 +68,12 @@ export class EntryItemComponent implements OnInit {
   });
 
   onSubmit() {
+    this.showSpinner = true
     this.product = this.entryProductDetails.value;
     console.log(this.product);
+    setTimeout(() => {
+      this.showSpinner = false
+    }, 500);
   }
 
   getTotalPrice() {

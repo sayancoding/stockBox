@@ -10,12 +10,18 @@ import { Company } from "src/app/model/enrtyCompany.model";
 })
 export class EntryCompanyComponent implements OnInit {
   companies: Company[];
-  term:string;
+  term: string;
+
+  showSpinner:boolean = true;
 
   constructor(private _comanyNameService: EnrtyCompanyService) {}
   getCompanyName() {
+    this.showSpinner = true;
     this._comanyNameService.getCompanyName().subscribe(cmp => {
       this.companies = cmp;
+      setTimeout(() => {
+        this.showSpinner = false;
+      }, 500);
       console.log(this.companies);
     });
   }

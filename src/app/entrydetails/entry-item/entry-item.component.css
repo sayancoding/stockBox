@@ -36,3 +36,8 @@ table
 {
   width: 35rem;
 }
+#loader
+{
+  padding-top: 5rem;
+  cursor: no-drop;
+}
