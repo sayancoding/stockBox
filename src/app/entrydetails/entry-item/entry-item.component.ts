@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Product } from 'src/app/model/entryProduct.model';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Product } from "src/app/model/entryProduct.model";
+import { Company } from 'src/app/model/enrtyCompany.model';
+import { Category } from 'src/app/model/entryCategory.model';
+import { EnrtyCompanyService } from 'src/app/service/enrty-company.service';
+import { EntryCategoryService } from 'src/app/service/entry-category.service';
 
 @Component({
   selector: "app-entry-item",
@@ -8,6 +12,10 @@ import { Product } from 'src/app/model/entryProduct.model';
   styleUrls: ["./entry-item.component.css"]
 })
 export class EntryItemComponent implements OnInit {
+
+  companies:Company[];
+  categories:Category[];
+
   product: Product;
   public price: any;
   public gst: any;
@@ -16,7 +24,14 @@ export class EntryItemComponent implements OnInit {
   public total: any;
   public gstPrice: any;
 
-  constructor() {}
+  constructor(private _companyName:EnrtyCompanyService,private _categoryName:EntryCategoryService) {
+    this._companyName.getCompanyName().subscribe(cmp=>{
+      this.companies = cmp;
+    })
+    this._categoryName.getCategoriesName().subscribe(cat=>{
+      this.categories = cat
+    })
+  }
 
   ngOnInit() {}
 
@@ -24,10 +39,20 @@ export class EntryItemComponent implements OnInit {
     productName: new FormControl(null, [Validators.required]),
     productCategory: new FormControl(null, [Validators.required]),
     productCompany: new FormControl(null, [Validators.required]),
-    productQuantity: new FormControl(null, [Validators.required]),
-    productPrice: new FormControl(null, [Validators.required]),
+    productQuantity: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(/^[0-9]\d*$/)
+    ]),
+    productPrice: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(/^[0-9]\d*$/)
+    ]),
     productTotalGSTPrice: new FormControl(this.gstPrice),
-    productGST: new FormControl(null, [Validators.required]),
+    productGST: new FormControl(null, [
+      Validators.required,
+      ,
+      Validators.pattern(/^[0-9]\d*$/)
+    ]),
     productTotalPrice: new FormControl(this.total)
   });
 

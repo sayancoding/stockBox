@@ -6,14 +6,12 @@
     <form [formGroup]="entryProductDetails" (ngSubmit)="onSubmit()">
       <input formControlName='productName' type="text" class="block bg-yellow-200 my-3 h-10 w-1/3 px-2 rounded-sm" placeholder="Product Name..">
       <select formControlName='productCategory' class="border-none my-3 w-1/4 px-1 bg-yellow-200 py-1 rounded-sm block">
-        <option value="">Choose Category</option>
-        <option value="Option2">Option 2</option>
-        <option value="Option3">Option 3</option>
+        <option value="" selected>Choose Category</option>
+        <option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</option>
       </select>
       <select formControlName='productCompany' class="border-none my-3 w-1/4 px-1 bg-yellow-200 py-1 rounded-sm block">
-        <option value="">Choose Company</option>
-        <option value="Option2">Option 2</option>
-        <option value="Option3">Option 3</option>
+        <option value="" selected>Choose Company</option>
+        <option *ngFor="let cmp of companies" [value]="cmp.name">{{cmp.name}}</option>
       </select>
       <div class="flex flex-wrap justify-start my-3">
         <input formControlName='productQuantity' [(ngModel)]="quantity" (ngModelChange)="getTotalPrice()" type="text" class="bg-yellow-200 mr-3 h-8 w-24 px-2 rounded-sm" placeholder="Quantity..">
