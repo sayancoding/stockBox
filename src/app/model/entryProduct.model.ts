@@ -4,7 +4,7 @@ export interface Product {
   productCategory?: string;
   productCompany?: string;
   productDate?:string,
-  productQuantity?: string;
+  productQuantity?: number;
   productPrice?: number;
   productGSTPrice?: number;
   productGST?: number;

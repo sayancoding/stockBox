@@ -6,6 +6,8 @@ import { SummaryPannelComponent } from './summary-pannel/summary-pannel.componen
 import { EntryCompanyComponent } from './entrydetails/entry-company/entry-company.component';
 import { EntryCategoryComponent } from './entrydetails/entry-category/entry-category.component';
 import { EntryItemComponent } from './entrydetails/entry-item/entry-item.component';
+import { StockDetailsComponent } from './stock-details/stock-details.component';
+import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,10 @@ const routes: Routes = [
         path: "",
         // pathMatch:'full',
         component: SummaryPannelComponent,
-        children: [{ path: "entryZone", component: EntryDetailsComponent }]
+        children: [
+          { path: "entryZone", component: EntryDetailsComponent },
+          { path: "stock", component: StockDetailsComponent }
+        ]
       },
       {
         path: "company-entry",
@@ -31,6 +36,10 @@ const routes: Routes = [
       {
         path: "product-entry",
         component: EntryItemComponent
+      },
+      {
+        path: "products-view",
+        component: ViewProductsComponent
       }
     ]
   }

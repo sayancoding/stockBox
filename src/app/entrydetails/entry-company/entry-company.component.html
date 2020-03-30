@@ -1,7 +1,7 @@
 <div class="mt-4 ml-6">
-<div class="absolute" id="loader" *ngIf="showSpinner">
-  <app-spinner></app-spinner>
-</div> 
+  <div class="absolute" id="loader" *ngIf="showSpinner">
+    <app-spinner></app-spinner>
+  </div>
 
   <div class="text-2xl my-2">
     Company Details
@@ -14,9 +14,19 @@
         formControlName="companyName"
         id="companyName"
       />
-      <p class="error" *ngIf="entryCompanyName.get('companyName').errors?.required">Company name required !</p>
-      <p class="error" *ngIf="entryCompanyName.get('companyName').errors?.pattern">need correct name !</p>
-      
+      <p
+        class="error"
+        *ngIf="entryCompanyName.get('companyName').errors?.required"
+      >
+        Company name required !
+      </p>
+      <p
+        class="error"
+        *ngIf="entryCompanyName.get('companyName').errors?.pattern"
+      >
+        need correct name !
+      </p>
+
       <input
         placeholder="Company address.."
         class="block bg-yellow-200 my-3 h-10 w-1/2 px-2 rounded-sm"
@@ -31,11 +41,31 @@
         formControlName="companyContact"
         id="companyContact"
       />
-      <p class="error" *ngIf="entryCompanyName.get('companyContact').errors?.required">Contact required !</p>
-      <p class="error" *ngIf="entryCompanyName.get('companyContact').errors?.pattern">need correct number !</p>
-      <p class="error" *ngIf="entryCompanyName.get('companyContact').errors?.minlength">should be minimum 10 !</p>
+      <p
+        class="error"
+        *ngIf="entryCompanyName.get('companyContact').errors?.required"
+      >
+        Contact required !
+      </p>
+      <p
+        class="error"
+        *ngIf="entryCompanyName.get('companyContact').errors?.pattern"
+      >
+        need correct number !
+      </p>
+      <p
+        class="error"
+        *ngIf="entryCompanyName.get('companyContact').errors?.minlength"
+      >
+        should be minimum 10 !
+      </p>
 
-      <input [disabled]="!entryCompanyName.valid" type="submit" class="bg-indigo-600 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg" value="Store" />
+      <input
+        [disabled]="!entryCompanyName.valid"
+        type="submit"
+        class="bg-indigo-600 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg"
+        value="Store"
+      />
     </form>
   </div>
 </div>
@@ -44,20 +74,41 @@
 </div> -->
 <div class="container mt-8 ml-6">
   <div class="container">
-    <input type="text" [(ngModel)]="term" placeholder="Search companies.." class="bg-indigo-100 w-1/3 px-2 py-2 rounded my-2">
+    <input
+      type="text"
+      [(ngModel)]="term"
+      placeholder="Search companies.."
+      class="bg-indigo-100 w-1/3 px-2 py-2 rounded my-2"
+    />
   </div>
-  <table class="border-collapse">  
-<tr class="">  
-    <th class="text-center w-1/4 rounded-l-md bg-indigo-700 text-white px-2 py-2">Company Name</th>
-    <th class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2">Address</th>
-    <th class="text-center w-1/4 rounded-r-md bg-indigo-700 text-white px-2 py-2">Contact No</th>
-</tr> 
-    <tr *ngFor="let item of companies | filter:term" >  
-        <td class="text-center border-2 py-1">{{item.name | uppercase }}</td>
-        <td class="text-center border-2 py-1">{{item.address | uppercase }}</td>
-        <td class="text-center border-2 py-1">{{item.contact}}</td>
-    </tr>  
-</table>
+  <table class="border-collapse">
+    <thead>
+      <tr class="">
+        <th
+          class="text-center w-1/4 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+        >
+          Company Name
+        </th>
+        <th class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2">
+          Address
+        </th>
+        <th
+          class="text-center w-1/4 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+        >
+          Contact No
+        </th>
+      </tr>
+    </thead>
+    <tbody class="">
+      <tr *ngFor="let item of companies | filter: term">
+        <td class="text-center border-2 py-1">{{ item.name | uppercase }}</td>
+        <td class="text-center border-2 py-1">
+          {{ item.address | uppercase }}
+        </td>
+        <td class="text-center border-2 py-1">{{ item.contact }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <!-- <div class="container">

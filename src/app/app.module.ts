@@ -20,6 +20,8 @@ import { SummaryPannelComponent } from "./summary-pannel/summary-pannel.componen
 import { EntryCategoryService } from "./service/entry-category.service";
 import { SpinnerComponent } from './spinner/spinner.component';
 import { EntryProductService } from './service/entry-product.service';
+import { StockDetailsComponent } from './stock-details/stock-details.component';
+import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { EntryProductService } from './service/entry-product.service';
     EntryItemComponent,
     HomeComponent,
     SummaryPannelComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    StockDetailsComponent,
+    ViewProductsComponent
   ],
   imports: [
     BrowserModule,
