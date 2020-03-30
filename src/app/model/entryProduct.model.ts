@@ -6,7 +6,7 @@ export interface Product {
   productDate?:string,
   productQuantity?: number;
   productPrice?: number;
-  productGSTPrice?: number;
+  productTotalGSTPrice?: number;
   productGST?: number;
   productTotalPrice?: number;
 }

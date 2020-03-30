@@ -43,4 +43,9 @@ export class EntryProductService {
     this.productDoc = this.db.doc(`products/${prod.id}`)
     this.productDoc.delete();
   }
+  updateProduct(prod:Product)
+  {
+    this.productDoc = this.db.doc(`products/${prod.id}`)
+    this.productDoc.update(prod);
+  }
 }

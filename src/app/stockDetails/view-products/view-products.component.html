@@ -1,3 +1,6 @@
+<div class="absolute w-9/12 h-screen" id="loader" *ngIf="showSpinner">
+  <app-spinner></app-spinner>
+</div> 
 <div class="container mt-8 ml-6">
   <div class="container">
     <div class="text-2xl my-2">
@@ -46,27 +49,27 @@
     Close ⛔
   </div>
  <div class="flex">
-       <input  [(ngModel)]="productToUpdate.productName" type="text" class="block bg-yellow-200 my-3 h-10 mr-2 w-1/4 px-2 rounded-sm" placeholder="Product Name..">
-       <input  [(ngModel)]="productToUpdate.productCategory" type="text" class="block bg-yellow-200 my-3 h-10 mr-2 w-1/4 px-2 rounded-sm" placeholder="Product Name..">
-       <input  [(ngModel)]="productToUpdate.productCompany" type="text" class="block bg-yellow-200 my-3 h-10 mr-2 w-1/4 px-2 rounded-sm" placeholder="Product Name..">
+       <input  [(ngModel)]="productToUpdate.productName" disabled  type="text" class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-1/4 px-2 rounded-sm" placeholder="Product Name..">
+       <input  [(ngModel)]="productToUpdate.productCategory" disabled  type="text" class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-1/4 px-2 rounded-sm" placeholder="Product Name..">
+       <input  [(ngModel)]="productToUpdate.productCompany" disabled  type="text" class="block bg-gary-200 cursor-not-allowed my-3 h-10 mr-2 w-1/4 px-2 rounded-sm" placeholder="Product Name..">
      </div>
      <div class="flex flex-wrap justify-start my-3">
       <input type="date" [(ngModel)]="productToUpdate.productDate" class="bg-yellow-200 w-1/5 mr-3 h-8 w-24 px-2 rounded-sm ">
-        <input  [(ngModel)]="productToUpdate.productQuantity" [(ngModel)]="quantity" (ngModelChange)="getTotalPrice()" type="text" class="bg-yellow-200 mr-3 h-8 w-24 px-2 rounded-sm" placeholder="Quantity..">
-        <input  [(ngModel)]="productToUpdate.productPrice" [(ngModel)]="price" (ngModelChange)="getTotalPrice()" type="text" class="bg-yellow-200 mr-3 h-8 w-1/6 px-2 rounded-sm" placeholder="Price..">
-        <input  [(ngModel)]="productToUpdate.productGST" [(ngModel)]="gst" (ngModelChange)="getTotalPrice()" type="text" class="bg-yellow-200 mr-3 h-8 w-24 px-2 rounded-sm" placeholder="GST(%)..">
+        <input  [(ngModel)]="productToUpdate.productQuantity" [(ngModel)]="quantity" (ngModelChange)="doCalculate($event)" type="number" class="bg-yellow-200 mr-3 h-8 w-24 px-2 rounded-sm" placeholder="Quantity..">
+        <input  [(ngModel)]="productToUpdate.productPrice" [(ngModel)]="price" (ngModelChange)="doCalculate($event)" type="number" class="bg-yellow-200 mr-3 h-8 w-1/6 px-2 rounded-sm" placeholder="Price..">
+        <input  [(ngModel)]="productToUpdate.productGST" [(ngModel)]="gst" (ngModelChange)="doCalculate($event)" type="number" class="bg-yellow-200 mr-3 h-8 w-24 px-2 rounded-sm" placeholder="GST(%)..">
       </div>
       <div class="flex">
         <div class="mr-2">
           <label for="" class="mb-2"><p class="mb-1 text-xs">With GST Price</p> </label>
-          <input  [(ngModel)]='productToUpdate.productTotalGSTPrice' disabled type="text" class="text-gray-700 bg-yellow-200 h-8 w-1/2 px-2 rounded-sm block" placeholder="GST Price">
+          <input  [(ngModel)]='productToUpdate.productTotalGSTPrice' disabled type="number" class="text-gray-700 bg-orange-200 h-8 w-1/2 px-2 rounded-sm block" placeholder="GST Price">
         </div>
         <div class="mr-2">
           <label for="" class="mb-2"><p class="mb-1 mt-2 text-xs">Total stock Price (Inc. GST)</p> </label>
-          <input  [(ngModel)]='productToUpdate.productTotalPrice' disabled type="text" class="text-gray-700 bg-yellow-200 h-8 w-1/2 px-2 rounded-sm block" placeholder="Price Total">
+          <input  [(ngModel)]='productToUpdate.productTotalPrice' disabled type="number" class="text-gray-700 bg-orange-200 h-8 w-1/2 px-2 rounded-sm block" placeholder="Price Total">
         </div>
       </div>
-      <input  type="button" class="bg-indigo-600 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg" value="Update" />
+      <input  type="button" (click)="onSubmit(productToUpdate)" class="bg-indigo-600 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg" value="Update" />
 </div>
 
 </div>

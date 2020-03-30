@@ -3,3 +3,8 @@ table
   font-size: small;
   width: 58rem;
 }
+#loader
+{
+  padding-top: 8rem;
+  cursor: no-drop;
+}
