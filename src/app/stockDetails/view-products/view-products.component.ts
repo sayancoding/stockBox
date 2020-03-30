@@ -35,6 +35,7 @@ export class ViewProductsComponent implements OnInit {
   ngOnInit() {}
 
   deleteItem($event, product: Product) {
+    this.clearStatus();
     this._products.deleteProduct(product);
   }
   toUpdateProduct($event, product: Product) {
