@@ -13,6 +13,19 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     $(document).ready(function(){
       var isHidden = false;
+      $(window).resize(function(){
+        var w = $(window).width();
+        if(w<=860)
+        {
+          $(".sidebar").addClass("hidden");
+          $(".main-container").addClass("large");
+        }else{
+          
+          $(".sidebar").removeClass("hidden");
+          $(".main-container").removeClass("large");
+        }
+      })
+      
       $("#toggle").click(function() {
         isHidden = !isHidden;
         if (isHidden) {
