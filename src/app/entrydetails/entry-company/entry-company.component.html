@@ -1,4 +1,4 @@
-<div class="mt-4 ml-6">
+<div class="mt-4 ml-1">
   <div class="absolute" id="loader" *ngIf="showSpinner">
     <app-spinner></app-spinner>
   </div>
@@ -10,7 +10,7 @@
     <form [formGroup]="entryCompanyName" (ngSubmit)="onSubmit()">
       <input
         placeholder="Company name.."
-        class="block bg-yellow-200 my-3 h-10 w-1/3 px-2 rounded-sm"
+        class="block bg-yellow-200 my-3 h-10 px-2 rounded-sm"
         formControlName="companyName"
         id="companyName"
       />
@@ -29,7 +29,7 @@
 
       <input
         placeholder="Company address.."
-        class="block bg-yellow-200 my-3 h-10 w-1/2 px-2 rounded-sm"
+        class="block bg-yellow-200 my-3 h-10 px-2 rounded-sm"
         formControlName="companyAddress"
         id="companyAddress"
       />
@@ -37,7 +37,7 @@
 
       <input
         placeholder="Contact No.."
-        class="block bg-yellow-200 my-3 h-10 w-1/5 px-2 rounded-sm"
+        class="block bg-yellow-200 my-3 h-10 px-2 rounded-sm"
         formControlName="companyContact"
         id="companyContact"
       />
@@ -72,59 +72,53 @@
 <!-- <div class="bg-img container px-8">
   <img src="../../../assets/undraw_add_file_4gfw.svg" class="" width="30%" height="30%"  alt="">
 </div> -->
-<div class="container mt-8 ml-6">
-  <div class="container">
+<div class="container">
+  <div class="container pt-4">
     <input
       type="text"
       [(ngModel)]="term"
       placeholder="Search companies.."
-      class="bg-indigo-100 w-1/3 px-2 py-2 rounded my-2"
+      class="bg-indigo-100 px-2 py-2 rounded my-2"
+      id="searchCompany"
     />
+    <div class="table-box">
+
+    <table>
+      <thead>
+        <tr class="">
+          <th
+            class="text-center w-1/4 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+          >
+            Company Name
+          </th>
+          <th class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2">
+            Address
+          </th>
+          <th
+            class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2"
+          >
+            Contact No
+          </th>
+          <th
+            class="text-center w-1/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+          >
+            Remove
+          </th>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr *ngFor="let item of companies | filter: term">
+          <td class="text-center border-2 py-1">{{ item.name | uppercase }}</td>
+          <td class="text-center border-2 py-1">
+            {{ item.address | uppercase }}
+          </td>
+          <td class="text-center border-2 py-1">{{ item.contact }}</td>
+          <td class="text-center border-2 py-1 text-red-600 cursor-pointer" (click)="deleteComp($event,item)"><fa name="trash"></fa></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table class="border-collapse">
-    <thead>
-      <tr class="">
-        <th
-          class="text-center w-1/4 rounded-l-md bg-indigo-700 text-white px-2 py-2"
-        >
-          Company Name
-        </th>
-        <th class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2">
-          Address
-        </th>
-        <th
-          class="text-center w-1/4 rounded-r-md bg-indigo-700 text-white px-2 py-2"
-        >
-          Contact No
-        </th>
-      </tr>
-    </thead>
-    <tbody class="">
-      <tr *ngFor="let item of companies | filter: term">
-        <td class="text-center border-2 py-1">{{ item.name | uppercase }}</td>
-        <td class="text-center border-2 py-1">
-          {{ item.address | uppercase }}
-        </td>
-        <td class="text-center border-2 py-1">{{ item.contact }}</td>
-      </tr>
-    </tbody>
-  </table>
+  </div>
+  
 </div>
 
-<!-- <div class="container">
-  <div class="row mt-4">
-    <div class="col-md-4">
-      <form [formGroup]="entryCompanyName" (ngSubmit)="onSubmit()" >
-        <input class="form-control form-control-md my-2" formControlName="companyName" width="50%" type="text" id="companyName">
-        <input type="submit" class="btn btn-warning" value="add">
-
-      </form>
-      <select id="company" >
-  <option [value]="company.name" *ngFor="let company of companies">{{company.name}}</option>
-</select>
-      <div *ngFor="let company of companies">
-        <p (click)="deleteComp($event,company)" >{{company.name}}</p>
-      </div>
-    </div>
-  </div>
-</div> -->

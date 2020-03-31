@@ -1,3 +1,7 @@
+.wrapper
+{
+  position: relative;
+}
 .home
 {
   background-image: url(../../assets/bg-flat.svg);
@@ -13,15 +17,14 @@
 }
 .sidebar
 {
-  position: relative;
+  position: sticky;
   width: 280px;
-  height: 100vh;
+  height: 120vh;
   background-color: rgba(239, 234, 255, 0.603);
   left: 0px;
   transition: 0.2s ease-in-out;
 }
 .main-container{
-  padding-left: 2rem;
   width: calc(100% - 280px);
   height: 100vh;
   display: flex;
@@ -32,19 +35,12 @@
 .navbar
 {
   display: flex;
-  padding:0 2rem 0 2rem ;
+  padding:0 1rem 0 1rem ;
   justify-content: space-between;
   background-color: #fff;
   position: relative;
 }
-.toggle-btn
-{
-  background-color: rgb(102, 31, 218);
-  padding: 12px;
-  margin: 4px;
-  text-decoration: none;
-  color: #fff;
-}
+
 .sidebar.hidden{
   display: hidden;
 }

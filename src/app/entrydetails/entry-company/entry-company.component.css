@@ -23,7 +23,6 @@ input[type='submit']:disabled
   background-color: rgb(168, 168, 168);
   cursor: not-allowed;
 }
-
 .bg-img
 {
   position: relative;
@@ -31,12 +30,34 @@ input[type='submit']:disabled
 .bg-img img{
   float: right;
 }
-
+.table-box
+{
+  width: 30rem;
+  height: 16rem;
+  overflow-y: scroll;
+}
+@media screen and (max-width: 480px)
+{
+  .table-box{
+    width: inherit;
+  }
+}
+table,th,tb
+{
+  border-collapse: collapse;
+}
 table
 {
-  width: 35rem;
+  width: 100%;
 }
-
+table th{
+  position: sticky;
+  top: 0;
+}
+table tr:nth-child(even)
+{
+  background-color: rgb(247, 247, 255);
+}
 
 #loader
 {
@@ -50,4 +71,34 @@ tbody
   height: 80px;
   overflow-x: scroll;
   overflow-y: scroll;
+}
+::-webkit-scrollbar
+{
+  width: 8px;
+}
+::-webkit-scrollbar-track
+{
+  background-color: rgb(233, 233, 233);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: rgb(157, 138, 255);
+}
+
+@media screen and (min-width: 480px)
+{
+  #companyName
+  {
+    width: 34%;
+  }
+  #companyAddress
+  {
+    width: 50%;
+  }
+  #companyContact
+  {
+    width: 20%;
+  }
 }

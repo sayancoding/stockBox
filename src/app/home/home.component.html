@@ -1,14 +1,18 @@
-<div class="wrapper ">
+<div class="wrapper">
   <div class="sidebar">
     <div class="text-indigo-700 font-bold text-center mt-4 text-2xl">
       StockBox
     </div>
   </div>
   <div class="main-container">
-    <div class="navbar">
-      <p>navbar</p>
-      <p id="toggle" class="toggle-btn">VEW</p>
+    <div class="">
+      <div class="navbar bg-gray-200">
+        <p id="toggle" class="text-center text-3xl cursor-pointer"><fa name="bars"></fa></p>
+        <p class="text-indigo-700 pt-2">VEW</p>
+      </div>
+      <div class="px-4">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-    <router-outlet></router-outlet>
   </div>
 </div>
