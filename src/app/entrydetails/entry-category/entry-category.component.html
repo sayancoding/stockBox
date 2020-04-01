@@ -1,22 +1,67 @@
-<div class="mt-4 ml-6">
+<div class="">
+    <div class="absolute" id="loader" *ngIf="showSpinner">
+    <app-spinner></app-spinner>
+  </div>
   <div class="text-2xl my-2">
     Products Category
   </div>
   <div>
-    <form [formGroup]='entryCategory' (ngSubmit)="onSubmit()" >
+    <form [formGroup]="entryCategory" (ngSubmit)="onSubmit()">
       <input
         type="text"
         placeholder="product category.."
-        class="block rounded bg-yellow-200 my-3 px-2 py-3 w-1/3"
+        class="block rounded bg-gray-100 my-3 px-2 py-3 w-full md:w-1/3"
         formControlName="categoryName"
       />
-      <p class="error" *ngIf="entryCategory.get('categoryName').errors?.required">Category required!</p>
+      <p
+        class="error"
+        *ngIf="entryCategory.get('categoryName').errors?.required"
+      >
+        Category required!
+      </p>
       <input
         [disabled]="!entryCategory.valid"
         type="submit"
-        class="bg-indigo-700 text-white px-4 py-1 mt-4 rounded shadow-sm hover:shadow-lg cursor-pointer"
+        class="bg-indigo-700 text-white px-4 py-1 mt-4 rounded shadow-lg hover:shadow-sm cursor-pointer"
         value="Store"
       />
     </form>
+  </div>
+</div>
+<div class="container">
+  <div class="container pt-4">
+    <input
+      type="text"
+      [(ngModel)]="term"
+      placeholder="Search category.."
+      class="bg-gray-100 px-2 py-2 rounded my-2"
+      id="searchCompany"
+    />
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th
+              class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+            >
+              Category
+            </th>
+            <th
+              class="text-center w-1/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+            >
+              Remove
+            </th>
+          </tr>
+        </thead>
+        <tbody class="">
+          <tr *ngFor="let item of categories | filter: term">
+            <td class="text-center border-2 py-1">
+              {{ item.name | uppercase }}
+            </td>
+            <td class="text-center border-2 text-red-600 cursor-pointer" (click)="removeCategory($event,item)"><fa name="trash"></fa></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

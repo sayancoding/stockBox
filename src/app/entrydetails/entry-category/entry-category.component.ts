@@ -10,10 +10,15 @@ import { EntryCategoryService } from "src/app/service/entry-category.service";
 })
 export class EntryCategoryComponent implements OnInit {
   categories: Category[];
-
+  term: string;
+  showSpinner:boolean = true;
   constructor(private _categoryNameService: EntryCategoryService) {
+    this.showSpinner = true;
     this._categoryNameService.getCategoriesName().subscribe(cat => {
       this.categories = cat;
+      setTimeout(() => {
+        this.showSpinner = false;
+      }, 200);
       console.log(this.categories);
     });
   }
@@ -27,6 +32,7 @@ export class EntryCategoryComponent implements OnInit {
     categoryName: new FormControl(null, [Validators.required])
   });
   onSubmit() {
+    this.showSpinner = true
     console.log({ name: this.entryCategory.get("categoryName").value });
     for (let i = 0; i < this.categories.length; i++) {
       if (
@@ -36,12 +42,15 @@ export class EntryCategoryComponent implements OnInit {
         break;
       }
     }
-    console.log(this.status)
+    console.log(this.status);
     if (this.status) {
       this._categoryNameService.addCategory({
         name: this.entryCategory.get("categoryName").value
       });
-
+      setTimeout(() => {
+        this.showSpinner = false;
+      }, 200);
+      
       setTimeout(() => {
         this.entryCategory.reset();
         alert(`Category Added 🤘`);
@@ -50,8 +59,9 @@ export class EntryCategoryComponent implements OnInit {
       alert("already exist ");
       this.entryCategory.reset();
     }
-    // this._categoryNameService.addCategory({
-    //   name: this.entryCategory.get("categoryName").value
-    // });
+  }
+
+  removeCategory($event, cat: Category) {
+    this._categoryNameService.removeCat(cat);
   }
 }
