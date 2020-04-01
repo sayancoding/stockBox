@@ -1,13 +1,42 @@
 <div class="wrapper">
   <div class="sidebar">
-    <div class="text-indigo-700 font-bold text-center mt-4 text-2xl">
-      StockBox
+    <a [routerLink]="[ '' ]">
+      <div class="text-indigo-700 font-bold text-center mt-4 text-2xl">
+        StockBox
+      </div>
+    </a>
+    <div class="text-center mt-2">
+      <img src="../../assets/undraw_profile_pic_ic5t.svg" class="mx-auto" width="30%" alt="">
+      <p class="text-gray-700 py-1">🤝Welcome! VEW</p>
     </div>
+    <div class="mt-3 text-center rounded-md bg-white py-1 mx-4 rounded-lg">
+      <a [routerLink]="[ '/home/entryZone' ]">
+        <li class="text-center list-none py-1 text-xl text-gray-700">Entry Zone</li>
+      </a>
+      <a [routerLink]="[ '/home/company-entry' ]">
+        <li class="text-center list-none py-1 text-gray-600 hover:text-indigo-700 cursor-pointer">Company Details</li>
+      </a>
+      <a [routerLink]="[ '/home/category-entry' ]">
+        <li class="text-center list-none py-1 text-gray-600 hover:text-indigo-700 cursor-pointer">Category Details</li>
+      </a>
+      <a [routerLink]="[ '/home/product-entry' ]">
+        <li class="text-center list-none py-1 text-gray-600 hover:text-indigo-700 cursor-pointer">Product Details</li>
+      </a>
+      <a [routerLink]="[ '/home/retailer-entry' ]">
+        <li class="text-center list-none py-1 text-gray-600 hover:text-indigo-700 cursor-pointer">Retailer Details</li>
+      </a>
+    </div>
+    <div class="mt-3 text-center rounded-md bg-white py-1 mx-4 rounded-lg">
+      <li class="text-center list-none py-1 text-xl text-gray-700">Stock</li>
+      <a [routerLink]="[ '/home/products-view' ]">
+        <li class="text-center list-none py-1 text-gray-600 hover:text-indigo-700 cursor-pointer">View Products</li>
+      </a>
+      </div>
   </div>
   <div class="main-container">
     <div class="">
       <div class="navbar bg-gray-200">
-        <p id="toggle" class="text-center text-3xl cursor-pointer"><fa name="bars"></fa></p>
+        <p id="toggle" class="text-center text-gray-400 text-3xl cursor-pointer"><fa name="bars"></fa></p>
         <p class="text-indigo-700 pt-2">VEW</p>
       </div>
       <div class="px-4">
