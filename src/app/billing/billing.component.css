@@ -1,0 +1,10 @@
+table
+{
+  font-size: small;
+  width: 50rem;
+}
+#loader
+{
+  padding-top: 8rem;
+  cursor: no-drop;
+}

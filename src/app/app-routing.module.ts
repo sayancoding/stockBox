@@ -8,6 +8,7 @@ import { EntryCategoryComponent } from './entrydetails/entry-category/entry-cate
 import { EntryItemComponent } from './entrydetails/entry-item/entry-item.component';
 import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
+import { BillingComponent } from './billing/billing.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: "products-view",
         component: ViewProductsComponent
+      },
+      {
+        path: "billing",
+        component: BillingComponent
       }
     ]
   }

@@ -22,6 +22,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { EntryProductService } from './service/entry-product.service';
 import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
+import { BillingComponent } from './billing/billing.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ViewProductsComponent } from './stockDetails/view-products/view-product
     SummaryPannelComponent,
     SpinnerComponent,
     StockDetailsComponent,
-    ViewProductsComponent
+    ViewProductsComponent,
+    BillingComponent
   ],
   imports: [
     BrowserModule,
