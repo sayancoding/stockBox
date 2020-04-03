@@ -12,7 +12,7 @@ export class BillingComponent implements OnInit {
   products: Product[];
   copyProduct: Product[];
 
-  singleProduct:Product;
+  singleProduct: Product;
 
   cartProduct: CartProduct;
   count: number;
@@ -21,8 +21,9 @@ export class BillingComponent implements OnInit {
   carted: CartProduct[] = [];
 
   showSpinner: boolean = true;
+  showCart = false;
 
-  constructor(private _products: EntryProductService) {
+  storeData() {
     this._products.getProducts().subscribe(prod => {
       this.products = prod;
       this.copyProduct = prod;
@@ -30,6 +31,10 @@ export class BillingComponent implements OnInit {
         this.showSpinner = false;
       }, 200);
     });
+  }
+
+  constructor(private _products: EntryProductService) {
+    this.storeData();
   }
 
   ngOnInit() {}
@@ -40,12 +45,12 @@ export class BillingComponent implements OnInit {
       productName: pr.productName,
       productTotalGSTPrice: pr.productTotalGSTPrice,
       productCount: 1,
-      priceSum:pr.productTotalGSTPrice
+      priceSum: pr.productTotalGSTPrice
     };
     if (this.carted.length === 0) {
       if (pr.productQuantity >= this.cartProduct.productCount) {
         this.carted.push(this.cartProduct);
-        
+
         ++this.totalCarted;
       } else alert(`Quantity limited`);
     } else {
@@ -81,7 +86,7 @@ export class BillingComponent implements OnInit {
       productName: pr.productName,
       productTotalGSTPrice: pr.productTotalGSTPrice,
       productCount: 1,
-      priceSum:pr.productTotalGSTPrice
+      priceSum: pr.productTotalGSTPrice
     };
     if (this.carted.length === 0) {
       alert(`Cart is empty now 🤐`);
@@ -111,24 +116,35 @@ export class BillingComponent implements OnInit {
     console.log(this.carted);
     console.log(`Total carted : ${this.totalCarted}`);
   }
-  doProceed($event)
-  {
-    for(var i = 0;i<this.carted.length;i++)
-    {
-      for(var j = 0;j<this.products.length;j++)
-      {
-        if(this.carted[i].id === this.products[j].id)
-        {
-          this.singleProduct = this.products[j];
-          this.singleProduct.productQuantity =
-            parseInt(this.singleProduct.productQuantity.toFixed()) -
-            this.carted[i].productCount;
-          this._products.updateProduct(this.singleProduct);
-          console.log(this.singleProduct)
+  doProceed($event) {
+    if (this.totalCarted > 0) {
+      this.showSpinner = true;
+      for (var i = 0; i < this.carted.length; i++) {
+        for (var j = 0; j < this.products.length; j++) {
+          if (this.carted[i].id === this.products[j].id) {
+            this.singleProduct = this.products[j];
+            this.singleProduct.productQuantity =
+              parseInt(this.singleProduct.productQuantity.toFixed()) -
+              this.carted[i].productCount;
+            this._products.updateProduct(this.singleProduct);
+            console.log(this.singleProduct);
+          }
         }
       }
     }
-    console.log(this.carted,this.products)
-    // this._products.doProceedDB(this.carted); 
+
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 200);
+    console.log(this.carted, this.products);
+    this.carted = [];
+    this.totalCarted = 0;
+    console.log(this.carted);
+    // this.storeData()
+    // this._products.doProceedDB(this.carted);
+  }
+
+  viewCart($event){
+    this.showCart = !this.showCart;
   }
 }

@@ -22,8 +22,8 @@ export class EntryItemComponent implements OnInit {
   public gst: any;
   public quantity: any;
 
-  public total: any;
-  public gstPrice: any;
+  public total: number;
+  public gstPrice: number;
 
   showSpinner:boolean = true;
 
@@ -87,10 +87,10 @@ export class EntryItemComponent implements OnInit {
     let totalPer: number =
       parseInt(this.price) + (parseInt(this.price) * parseInt(this.gst)) / 100;
     this.gstPrice = totalPer;
-    this.gstPrice = parseFloat(this.gstPrice).toFixed(2);
+    this.gstPrice = parseInt(this.gstPrice.toFixed());
 
     let total: number = totalPer * parseInt(this.quantity);
     this.total = total;
-    this.total = parseFloat(this.total).toFixed(2);
+    this.total = parseInt(this.total.toFixed());
   }
 }
