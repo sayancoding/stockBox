@@ -39,11 +39,13 @@ export class BillingComponent implements OnInit {
       id: pr.id,
       productName: pr.productName,
       productTotalGSTPrice: pr.productTotalGSTPrice,
-      productCount: 1
+      productCount: 1,
+      priceSum:pr.productTotalGSTPrice
     };
     if (this.carted.length === 0) {
       if (pr.productQuantity >= this.cartProduct.productCount) {
         this.carted.push(this.cartProduct);
+        
         ++this.totalCarted;
       } else alert(`Quantity limited`);
     } else {
@@ -58,6 +60,7 @@ export class BillingComponent implements OnInit {
       if (isSame) {
         if (pr.productQuantity > this.carted[i].productCount) {
           this.carted[i].productCount += 1;
+          this.carted[i].priceSum += this.carted[i].productTotalGSTPrice;
           ++this.totalCarted;
         } else alert(`Quantity limited`);
       } else {
@@ -77,7 +80,8 @@ export class BillingComponent implements OnInit {
       id: pr.id,
       productName: pr.productName,
       productTotalGSTPrice: pr.productTotalGSTPrice,
-      productCount: 1
+      productCount: 1,
+      priceSum:pr.productTotalGSTPrice
     };
     if (this.carted.length === 0) {
       alert(`Cart is empty now 🤐`);
@@ -94,6 +98,7 @@ export class BillingComponent implements OnInit {
         if (this.carted[i].productCount > 0) {
           this.carted[i].productCount -= 1;
           --this.totalCarted;
+          this.carted[i].priceSum -= this.carted[i].productTotalGSTPrice;
         } else if (this.totalCarted === 0) {
           alert(`Cart is empty now 🤐`);
         } else if (this.carted[i].productCount === 0) {
