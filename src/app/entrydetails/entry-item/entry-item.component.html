@@ -42,7 +42,7 @@
           formControlName="productQuantity"
           [(ngModel)]="quantity"
           (ngModelChange)="getTotalPrice()"
-          type="text"
+          type="number"
           class="bg-gray-100 my-1 md:my-0 mr-3 h-8 w-2/6 md:w-24 px-2 rounded-sm"
           placeholder="Quantity.."
         />
@@ -50,7 +50,7 @@
           formControlName="productPrice"
           [(ngModel)]="price"
           (ngModelChange)="getTotalPrice()"
-          type="text"
+          type="number"
           class="bg-gray-100 mr-3 my-1 md:my-0 h-8 w-2/6 md:w-1/6 px-2 rounded-sm"
           placeholder="Price.."
         />
@@ -58,7 +58,7 @@
           formControlName="productGST"
           [(ngModel)]="gst"
           (ngModelChange)="getTotalPrice()"
-          type="text"
+          type="number"
           class="bg-gray-100 mr-3 h-8 my-1 md:my-0 w-2/6 md:w-24 px-2 rounded-sm"
           placeholder="GST(%).."
         />
@@ -71,7 +71,7 @@
         formControlName="productTotalGSTPrice"
         [(ngModel)]="gstPrice"
         disabled
-        type="text"
+        type="number"
         class="text-gray-700 bg-gray-100 mr-3 h-8 w-2/6 md:w-1/6 px-2 rounded-sm block"
         placeholder="GST Price"
       />
@@ -83,7 +83,7 @@
         formControlName="productTotalPrice"
         [(ngModel)]="total"
         disabled
-        type="text"
+        type="number"
         class="text-gray-700 bg-gray-100 mr-3 h-8 w-2/6 md:w-1/6 px-2 rounded-sm block"
         placeholder="Price Total"
       />
