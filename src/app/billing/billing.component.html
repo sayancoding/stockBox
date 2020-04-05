@@ -111,9 +111,9 @@
       </tbody>
     </table>
   </div>
-  <!-- <div class="px-2 py-1 bg-indigo-700 inline-block" (click)="doProceed($event)">
-    Proceed
-  </div> -->
+
+  <!-- billing form  -->
+  
   <div class="text-xl mt-4 text-gray-700">
     Billing Details
   </div>
@@ -143,26 +143,29 @@
         <input
           type="text"
           placeholder="Total Price"
+          disabled
           [(ngModel)]="totalCartedAmount"
-          class="block rounded bg-gray-200 mr-2 my-3 px-2 py-3 w-full md:w-1/6"
+          class="block rounded mr-2 my-3 px-2 cursor-not-allowed py-3 w-full md:w-1/6"
           formControlName="totalAmount"
         />
         <input
           type="text"
           placeholder="Payable"
           [(ngModel)]="payable"
+          (ngModelChange)="doCalc($event)"
           class="block rounded bg-gray-200 mr-2 my-3 px-2 py-3 w-full md:w-1/6"
           formControlName="payableAmount"
         />
         <input
           type="text"
           placeholder="Due"
-          [(ngModel)]="due"
-          class="block rounded bg-gray-200 mr-2 my-3 px-2 py-3 w-full md:w-1/6"
+          [(ngModel)]="due"disabled
+          class="block rounded mr-2 my-3 px-2 py-3 cursor-not-allowed w-full md:w-1/6"
           formControlName="dueAmount"
         />
       </div>
       <input
+      [disabled]="!billing.valid"
         type="submit"
         value="Proceed"
         class="px-2 py-1 bg-indigo-700 text-white rounded cursor-pointer inline-block"

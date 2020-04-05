@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Product } from "../model/entryProduct.model";
 import { EntryProductService } from "../service/entry-product.service";
 import { CartProduct } from "../model/carProduct.model";
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Bills } from '../model/billsDetails.model';
 
 @Component({
@@ -20,8 +20,8 @@ export class BillingComponent implements OnInit {
   count: number;
   totalCarted: number = 0;
   totalCartedAmount = 0;
-  payable = 0
-  due = this.totalCarted
+  payable = 0;
+  due = this.totalCartedAmount;
 
   carted: CartProduct[] = [];
 
@@ -30,7 +30,7 @@ export class BillingComponent implements OnInit {
 
   //Bills Variable
   receiptNo: string;
-  bill:Bills;
+  bill: Bills;
 
   storeData() {
     this._products.getProducts().subscribe((prod) => {
@@ -59,8 +59,9 @@ export class BillingComponent implements OnInit {
     if (this.carted.length === 0) {
       if (pr.productQuantity >= this.cartProduct.productCount) {
         this.carted.push(this.cartProduct);
-        this.totalCartedAmount += this.cartProduct.productTotalGSTPrice
+        this.totalCartedAmount += this.cartProduct.productTotalGSTPrice;
         ++this.totalCarted;
+        this.doCalc($event);
       } else alert(`Quantity limited`);
     } else {
       var isSame = false;
@@ -76,12 +77,14 @@ export class BillingComponent implements OnInit {
           this.carted[i].productCount += 1;
           this.carted[i].priceSum += this.carted[i].productTotalGSTPrice;
           this.totalCartedAmount += this.cartProduct.productTotalGSTPrice;
+          this.doCalc($event);
           ++this.totalCarted;
         } else alert(`Quantity limited`);
       } else {
         if (pr.productQuantity >= this.cartProduct.productCount) {
           this.carted.push(this.cartProduct);
           this.totalCartedAmount += this.cartProduct.productTotalGSTPrice;
+          this.doCalc($event);
           ++this.totalCarted;
         } else {
           alert(`Quantity limited`);
@@ -116,6 +119,7 @@ export class BillingComponent implements OnInit {
           --this.totalCarted;
           this.carted[i].priceSum -= this.carted[i].productTotalGSTPrice;
           this.totalCartedAmount -= this.cartProduct.productTotalGSTPrice;
+          this.doCalc($event);
         } else if (this.totalCarted === 0) {
           alert(`Cart is empty now 🤐`);
         } else if (this.carted[i].productCount === 0) {
@@ -161,33 +165,40 @@ export class BillingComponent implements OnInit {
   }
 
   //on - bills Method
-  billing = new FormGroup(
-    {
-      customerName: new FormControl(null),
-      customerAddress: new FormControl(null),
-      customerContact: new FormControl(null),
-      totalAmount: new FormControl(null),
-      payableAmount: new FormControl(null),
-      dueAmount: new FormControl(null),
-    }
-  )
+  billing = new FormGroup({
+    customerName: new FormControl(null, [Validators.required]),
+    customerAddress: new FormControl(null, [Validators.required]),
+    customerContact: new FormControl(null,[Validators.required]),
+    totalAmount: new FormControl(null),
+    payableAmount: new FormControl(null),
+    dueAmount: new FormControl(null),
+  });
 
   doBill() {
-    this.receiptNo = `VEW${new Date().getDay()}${new Date().getMonth()+1}${new Date().getFullYear()}/${new Date().getHours()}${new Date().getMinutes()}/${new Date().getMilliseconds()}`;
-    
+    this.receiptNo = `VEW${new Date().getDay()}${
+      new Date().getMonth() + 1
+    }${new Date().getFullYear()}/${new Date().getHours()}${new Date().getMinutes()}/${new Date().getMilliseconds()}`;
+
     this.bill = {
-      receiptNo:this.receiptNo,
+      receiptNo: this.receiptNo,
       date: new Date().toDateString(),
       customerName: this.billing.get("customerName").value,
       customerAddress: this.billing.get("customerAddress").value,
       customerContact: this.billing.get("customerContact").value,
-      cartedItems:this.carted,
+      cartedItems: this.carted,
       totalAmount: parseFloat(this.billing.get("totalAmount").value),
       payableAmount: parseFloat(this.billing.get("payableAmount").value),
       dueAmount: parseFloat(this.billing.get("dueAmount").value),
     };
-
-    console.log(this.bill)
+    console.log(this.bill);
     this.billing.reset();
+  }
+
+  doCalc($event) {
+    if (this.totalCartedAmount >= this.payable) {
+      this.due = this.totalCartedAmount - this.payable;
+    } else {
+      this.due = 0;
+    }
   }
 }
