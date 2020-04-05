@@ -2,20 +2,35 @@
   <app-spinner></app-spinner>
 </div>
 
-<div class="w-full h-full pl-64 pt-20 fixed rounded-md" (click)="viewCart($event)" style="background-color: rgba(240, 240, 240, 0.363);" *ngIf="showCart">
+<div
+  class="w-full h-full pl-64 pt-20 fixed rounded-md"
+  (click)="viewCart($event)"
+  style="background-color: rgba(240, 240, 240, 0.363);"
+  *ngIf="showCart"
+>
   <div class="bg-indigo-600 mx-auto p-4 shadow-2xl rounded-sm inline-block">
     <div class="flex justify-between">
       <p class="text-xl text-indigo-200">Current Carted..</p>
-      <p class="text-sm text-indigo-200 cursor-pointer" (click)="viewCart($event)">❌</p>
+      <p
+        class="text-sm text-indigo-200 cursor-pointer"
+        (click)="viewCart($event)"
+      >
+        ❌
+      </p>
     </div>
-    <p *ngIf="(totalCarted>=1)?true:false">Total Items: {{totalCarted}}</p>
-    <p *ngIf="(totalCarted==0)?true:false">Empty Cart☹</p>
+    <p *ngIf="totalCarted >= 1 ? true : false">
+      Total Items: {{ totalCarted }}
+    </p>
+    <p *ngIf="totalCarted == 0 ? true : false">Empty Cart☹</p>
     <div *ngFor="let item of carted">
-      <div class="flex py-2 rounded-lg" *ngIf="(item.productCount>=1)?true:false">
-      <p class="px-4 w-1/3">{{item.productName}} </p>
-      <p class="px-4">{{item.productTotalGSTPrice}} </p>
-      <p class="px-4"> {{item.productCount}} </p>
-      <p class="px-4"> {{item.priceSum}} </p>
+      <div
+        class="flex py-2 rounded-lg"
+        *ngIf="item.productCount >= 1 ? true : false"
+      >
+        <p class="px-4 w-1/3">{{ item.productName }}</p>
+        <p class="px-4">{{ item.productTotalGSTPrice }}</p>
+        <p class="px-4">{{ item.productCount }}</p>
+        <p class="px-4">{{ item.priceSum }}</p>
       </div>
     </div>
   </div>
@@ -33,53 +48,125 @@
         placeholder="Search product.."
         class="bg-indigo-100 w-1/3 px-2 mr-2 py-2 rounded my-2"
       />
-      <p class="text-2xl text-red-800 cursor-pointer"><fa name="cart-arrow-down" (click)="viewCart($event)"></fa></p>
+      <p class="text-2xl text-red-800 cursor-pointer">
+        <fa name="cart-arrow-down" (click)="viewCart($event)"></fa>
+      </p>
     </div>
-    </div>
-  <table class="border-collapse">
-    <thead>
-      <tr class="">
-        <th
-          class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2"
-        >
-          Product Name
-        </th>
-        <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">
-          Price
-        </th>
-        <!-- <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">GST(%)</th> -->
-        <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">
-          Price(inc GST)
-        </th>
-        <th
-          class="text-center w-2/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
-        >
-          Action
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of products | filter: term">
-        <td class="text-center border-2 py-1 text-orange-500">
-          {{ item.productName | uppercase }}
-        </td>
-        <td class="text-center border-2 py-1 text-red-500">
-          <p class="text-sm">{{item.productPrice}} ({{item.productGST}})</p>
-        </td>
-        <td class="text-center border-2 py-1 text-red-500">
-          <p class="text-sm">{{item.productTotalGSTPrice}}</p>
-        </td>
-        <td class="text-center border-2 py-1 ">
-          <div class="flex align-middle my-1 justify-center pl-2">
-          <p class="text-lg text-red-500 py-1 px-1 hover:bg-red-200 rounded-full cursor-pointer " id="pluse"><fa name="plus" (click)="addProduct($event,item)"></fa></p>
-          <p class="text-xl text-blue-500 px-1" id="count">0</p>
-          <p class="text-lg text-red-500 py-1 px-1 hover:bg-red-200 rounded-full cursor-pointer" id="minus" (click)="removeProduct($event,item)"><fa name="minus"></fa></p>
-        </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="px-2 py-1 bg-indigo-700 inline-block" (click)="doProceed($event)">
+  </div>
+  <div class="table-box">
+    <table class="border-collapse">
+      <thead>
+        <tr class="">
+          <th
+            class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+          >
+            Product Name
+          </th>
+          <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">
+            Price
+          </th>
+          <!-- <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">GST(%)</th> -->
+          <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">
+            Price(inc GST)
+          </th>
+          <th
+            class="text-center w-2/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+          >
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of products | filter: term">
+          <td class="text-center border-2 py-1 text-orange-500">
+            {{ item.productName | uppercase }}
+          </td>
+          <td class="text-center border-2 py-1 text-red-500">
+            <p class="text-sm">
+              {{ item.productPrice }} ({{ item.productGST }})
+            </p>
+          </td>
+          <td class="text-center border-2 py-1 text-red-500">
+            <p class="text-sm">{{ item.productTotalGSTPrice }}</p>
+          </td>
+          <td class="text-center border-2 py-1">
+            <div class="flex align-middle my-1 justify-center pl-2">
+              <p
+                class="text-lg text-red-500 py-1 px-1 hover:bg-red-200 rounded-full cursor-pointer"
+                id="pluse"
+              >
+                <fa name="plus" (click)="addProduct($event, item)"></fa>
+              </p>
+              <p class="text-xl text-blue-500 px-1" id="count">0</p>
+              <p
+                class="text-lg text-red-500 py-1 px-1 hover:bg-red-200 rounded-full cursor-pointer"
+                id="minus"
+                (click)="removeProduct($event, item)"
+              >
+                <fa name="minus"></fa>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- <div class="px-2 py-1 bg-indigo-700 inline-block" (click)="doProceed($event)">
     Proceed
+  </div> -->
+  <div class="text-xl mt-4 text-gray-700">
+    Billing Details
+  </div>
+  <div class="mt-6">
+    <form [formGroup]="billing" (ngSubmit)="doBill()" >
+      <input
+        type="text"
+        placeholder="Customer Name.."
+        class="block rounded bg-gray-200 my-3 px-2 py-3 mr-4 w-full md:w-1/3"
+        formControlName="customerName"
+      />
+      <div class="flex flex-wrap">
+        <input
+          type="text"
+          placeholder="Customer Address.."
+          class="block rounded bg-gray-200 my-3 px-2 mr-4 py-3 w-full md:w-1/3"
+          formControlName="customerAddress"
+        />
+        <input
+          type="text"
+          placeholder="Mobile No.."
+          class="block rounded bg-gray-200 my-3 px-2 py-3 w-full md:w-1/3"
+          formControlName="customerContact"
+        />
+      </div>
+      <div class="flex flex-wrap">
+        <input
+          type="text"
+          placeholder="Total Price"
+          [(ngModel)]="totalCartedAmount"
+          class="block rounded bg-gray-200 mr-2 my-3 px-2 py-3 w-full md:w-1/6"
+          formControlName="totalAmount"
+        />
+        <input
+          type="text"
+          placeholder="Payable"
+          [(ngModel)]="payable"
+          class="block rounded bg-gray-200 mr-2 my-3 px-2 py-3 w-full md:w-1/6"
+          formControlName="payableAmount"
+        />
+        <input
+          type="text"
+          placeholder="Due"
+          [(ngModel)]="due"
+          class="block rounded bg-gray-200 mr-2 my-3 px-2 py-3 w-full md:w-1/6"
+          formControlName="dueAmount"
+        />
+      </div>
+      <input
+        type="submit"
+        value="Proceed"
+        class="px-2 py-1 bg-indigo-700 text-white rounded cursor-pointer inline-block"
+      />
+    </form>
   </div>
 </div>

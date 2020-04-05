@@ -1,7 +1,18 @@
-table
+.table-box
 {
   font-size: small;
   width: 50rem;
+  height: 14rem;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+table
+{
+  width: 100%;
+}
+table th{
+  position: sticky;
+  top: 0;
 }
 #loader
 {
