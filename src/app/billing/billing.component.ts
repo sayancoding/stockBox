@@ -4,6 +4,7 @@ import { EntryProductService } from "../service/entry-product.service";
 import { CartProduct } from "../model/carProduct.model";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Bills } from '../model/billsDetails.model';
+import { BillingService } from '../service/billing.service';
 
 @Component({
   selector: "app-billing",
@@ -25,12 +26,13 @@ export class BillingComponent implements OnInit {
 
   carted: CartProduct[] = [];
 
-  showSpinner: boolean = false;
+  showSpinner: boolean = true;
   showCart = false;
 
   //Bills Variable
   receiptNo: string;
   bill: Bills;
+  storedBills:Bills[]
 
   storeData() {
     this._products.getProducts().subscribe((prod) => {
@@ -42,8 +44,18 @@ export class BillingComponent implements OnInit {
     });
   }
 
-  constructor(private _products: EntryProductService) {
+  storedAllBill(){
+    this.showSpinner = true;
+    this._bills.getBills().subscribe(bills=>{
+      this.storedBills = bills
+      this.showSpinner = false
+      console.log(this.storedBills)
+    })
+  }
+
+  constructor(private _products: EntryProductService,private _bills:BillingService) {
     this.storeData();
+    this.storedAllBill();
   }
 
   ngOnInit() {}
@@ -191,7 +203,9 @@ export class BillingComponent implements OnInit {
       dueAmount: parseFloat(this.billing.get("dueAmount").value),
     };
     console.log(this.bill);
+    this._bills.addBill(this.bill);
     this.billing.reset();
+    alert(`Hurry! Thanks a lots🤝`)
   }
 
   doCalc($event) {
