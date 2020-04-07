@@ -10,6 +10,8 @@ import { EventEmitter } from "events";
 import { Router } from '@angular/router';
 import { InvoiceService } from '../service/invoice.service';
 
+import {imgData} from  './imageData';
+
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { UserOptions } from 'jspdf-autotable'
@@ -241,11 +243,11 @@ export class BillingComponent implements OnInit {
     }
     console.log(this.cart_2d)
     const doc = new jsPDF();
-      // doc.addImage(imgData, "JPEG", 14, 10, 20, 20);
+      doc.addImage(imgData, "JPEG", 14, 10, 20, 20);
 
       doc.setFontSize(14);
       doc.setFontStyle("bold");
-      doc.setTextColor(38, 84, 255);
+      doc.setTextColor(255, 97, 97);
       doc.text("INVOICE", 138, 14);
 
       doc.setFontSize(9);
@@ -270,6 +272,7 @@ export class BillingComponent implements OnInit {
 
     doc.autoTable({
       margin: { top: 62 },
+      theme:'grid',
       head: [["Item Name", "Price inc. GST", "Quantity", "Total Price"]],
       body: this.cart_2d,
     });
