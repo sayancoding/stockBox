@@ -10,6 +10,11 @@ import { EventEmitter } from "events";
 import { Router } from '@angular/router';
 import { InvoiceService } from '../service/invoice.service';
 
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import { UserOptions } from 'jspdf-autotable'
+
+
 @Component({
   selector: "app-billing",
   templateUrl: "./billing.component.html",
@@ -29,6 +34,8 @@ export class BillingComponent implements OnInit {
   due = this.totalCartedAmount;
 
   carted: CartProduct[] = [];
+  cart_2d:any[]=[];
+  cart_1d:any[]=[];
 
   showSpinner: boolean = true;
   showCart = false;
@@ -61,8 +68,8 @@ export class BillingComponent implements OnInit {
     private _products: EntryProductService,
     private _bills: BillingService,
     public _emitter: EventEmitter,
-    public _router : Router,
-    private _invoiceService:InvoiceService
+    public _router: Router,
+    private _invoiceService: InvoiceService
   ) {
     this.storeData();
     this.storedAllBill();
@@ -212,16 +219,61 @@ export class BillingComponent implements OnInit {
       payableAmount: parseFloat(this.billing.get("payableAmount").value),
       dueAmount: parseFloat(this.billing.get("dueAmount").value),
     };
-    console.log(this.bill);
     // this._bills.addBill(this.bill);
     this.billing.reset();
-    this._router.navigateByUrl("home/generatePDF");
-    this._emitter.emit('currentBillData',this.bill);
-    // this._emitter.on('currentBillData',(data)=>{
-    //   console.log(data)
-    // })
-    this._invoiceService.gettingData("hi emitting")
+    this._emitter.emit("currentBillData", this.bill);
     alert(`Hurry! Thanks a lots🤝`);
+    this.printPdf();
+  }
+  
+  printPdf(){
+    console.log(this.bill);
+    console.log(this.carted);
+    for(let i =0;i<this.carted.length;i++)
+    {
+      this.cart_1d.push(this.carted[i].productName);
+      this.cart_1d.push(this.carted[i].productTotalGSTPrice);
+      this.cart_1d.push(this.carted[i].productCount);
+      this.cart_1d.push(this.carted[i].priceSum);
+
+      this.cart_2d.push(this.cart_1d)
+      this.cart_1d = [];
+    }
+    console.log(this.cart_2d)
+    const doc = new jsPDF();
+      // doc.addImage(imgData, "JPEG", 14, 10, 20, 20);
+
+      doc.setFontSize(14);
+      doc.setFontStyle("bold");
+      doc.setTextColor(38, 84, 255);
+      doc.text("INVOICE", 138, 14);
+
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(0, 0, 0);
+      doc.text(`Date: ${this.bill.date}`, 138, 19);
+      doc.text(`Invoice No: ${this.bill.receiptNo}`, 138, 23);
+
+      doc.setFontSize(14);
+      doc.setFontStyle("bold");
+      doc.text("VENUS ENGINEERING WORK", 36, 14.2);
+      doc.setFontSize(10);
+      doc.setFontStyle("normal");
+      doc.text("Ghatal, Paschim Medinipur, Pin No - 721212 ", 36, 20);
+      doc.setFontSize(9);
+      doc.setFontStyle("bold");
+      doc.text("Contact No: 9474086909", 36, 25);
+      doc.text("GST No: XXXXXXXXX", 36, 29);
+
+      doc.setLineWidth(0.1);
+      doc.line(16, 40, 190, 40, 60);
+
+    doc.autoTable({
+      margin: { top: 62 },
+      head: [["Item Name", "Price inc. GST", "Quantity", "Total Price"]],
+      body: this.cart_2d,
+    });
+   doc.save(`${this.bill.receiptNo}`); 
   }
 
   doCalc($event) {
