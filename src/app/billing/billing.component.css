@@ -11,7 +11,7 @@ table
   width: 100%;
 }
 table th{
-  position: sticky;
+  /* position: sticky; */
   top: 0;
 }
 #loader

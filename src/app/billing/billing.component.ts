@@ -2,9 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { Product } from "../model/entryProduct.model";
 import { EntryProductService } from "../service/entry-product.service";
 import { CartProduct } from "../model/carProduct.model";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Bills } from '../model/billsDetails.model';
-import { BillingService } from '../service/billing.service';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Bills } from "../model/billsDetails.model";
+import { BillingService } from "../service/billing.service";
+
+import { EventEmitter } from "events";
+import { Router } from '@angular/router';
+import { InvoiceService } from '../service/invoice.service';
 
 @Component({
   selector: "app-billing",
@@ -32,7 +36,7 @@ export class BillingComponent implements OnInit {
   //Bills Variable
   receiptNo: string;
   bill: Bills;
-  storedBills:Bills[]
+  storedBills: Bills[];
 
   storeData() {
     this._products.getProducts().subscribe((prod) => {
@@ -44,16 +48,22 @@ export class BillingComponent implements OnInit {
     });
   }
 
-  storedAllBill(){
+  storedAllBill() {
     this.showSpinner = true;
-    this._bills.getBills().subscribe(bills=>{
-      this.storedBills = bills
-      this.showSpinner = false
-      console.log(this.storedBills)
-    })
+    this._bills.getBills().subscribe((bills) => {
+      this.storedBills = bills;
+      this.showSpinner = false;
+      console.log(this.storedBills);
+    });
   }
 
-  constructor(private _products: EntryProductService,private _bills:BillingService) {
+  constructor(
+    private _products: EntryProductService,
+    private _bills: BillingService,
+    public _emitter: EventEmitter,
+    public _router : Router,
+    private _invoiceService:InvoiceService
+  ) {
     this.storeData();
     this.storedAllBill();
   }
@@ -180,7 +190,7 @@ export class BillingComponent implements OnInit {
   billing = new FormGroup({
     customerName: new FormControl(null, [Validators.required]),
     customerAddress: new FormControl(null, [Validators.required]),
-    customerContact: new FormControl(null,[Validators.required]),
+    customerContact: new FormControl(null, [Validators.required]),
     totalAmount: new FormControl(null),
     payableAmount: new FormControl(null),
     dueAmount: new FormControl(null),
@@ -203,9 +213,15 @@ export class BillingComponent implements OnInit {
       dueAmount: parseFloat(this.billing.get("dueAmount").value),
     };
     console.log(this.bill);
-    this._bills.addBill(this.bill);
+    // this._bills.addBill(this.bill);
     this.billing.reset();
-    alert(`Hurry! Thanks a lots🤝`)
+    this._router.navigateByUrl("home/generatePDF");
+    this._emitter.emit('currentBillData',this.bill);
+    // this._emitter.on('currentBillData',(data)=>{
+    //   console.log(data)
+    // })
+    this._invoiceService.gettingData("hi emitting")
+    alert(`Hurry! Thanks a lots🤝`);
   }
 
   doCalc($event) {

@@ -23,6 +23,8 @@ import { EntryProductService } from './service/entry-product.service';
 import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
 import { BillingComponent } from './billing/billing.component';
+import { EventEmitter } from 'events';
+import { GenerateReceiptComponent } from './generate-receipt/generate-receipt.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { BillingComponent } from './billing/billing.component';
     SpinnerComponent,
     StockDetailsComponent,
     ViewProductsComponent,
-    BillingComponent
+    BillingComponent,
+    GenerateReceiptComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,9 +49,14 @@ import { BillingComponent } from './billing/billing.component';
     AngularFireModule.initializeApp(environment.firebaseConfig, "inventory"),
     AngularFirestoreModule,
     AngularFontAwesomeModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
-  providers: [EnrtyCompanyService, EntryCategoryService,EntryProductService],
-  bootstrap: [AppComponent]
+  providers: [
+    EnrtyCompanyService,
+    EntryCategoryService,
+    EntryProductService,
+    EventEmitter,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

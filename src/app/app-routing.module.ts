@@ -9,6 +9,7 @@ import { EntryItemComponent } from './entrydetails/entry-item/entry-item.compone
 import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
 import { BillingComponent } from './billing/billing.component';
+import { GenerateReceiptComponent } from './generate-receipt/generate-receipt.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: "billing",
         component: BillingComponent
+      },
+      {
+        path: "generatePDF",
+        component:GenerateReceiptComponent
       }
     ]
   }
