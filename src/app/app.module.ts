@@ -24,7 +24,6 @@ import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
 import { BillingComponent } from './billing/billing.component';
 import { EventEmitter } from 'events';
-import { GenerateReceiptComponent } from './generate-receipt/generate-receipt.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import { GenerateReceiptComponent } from './generate-receipt/generate-receipt.co
     StockDetailsComponent,
     ViewProductsComponent,
     BillingComponent,
-    GenerateReceiptComponent,
   ],
   imports: [
     BrowserModule,
