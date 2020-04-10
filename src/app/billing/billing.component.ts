@@ -276,9 +276,18 @@ export class BillingComponent implements OnInit {
       head: [["Item Name", "Price inc. GST", "Quantity", "Total Price"]],
       body: this.cart_2d,
     });
-   doc.save(`${this.bill.receiptNo}`); 
+  //  doc.save(`${this.bill.receiptNo}`); 
+  //  doc.output("datauristring");
+   doc.setProperties({
+     title: `${this.bill.receiptNo}.pdf`,
+   });
+    var string = doc.output('datauristring');
+    var iframe = "<iframe width='100%' height='100%' src='" + string + "'></iframe>"
+    var x = window.open();
+    x.document.open();
+    x.document.write(iframe);
+    x.document.close();
   }
-
   doCalc($event) {
     if (this.totalCartedAmount >= this.payable) {
       this.due = this.totalCartedAmount - this.payable;

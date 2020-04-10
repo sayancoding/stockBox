@@ -24,6 +24,8 @@ import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
 import { BillingComponent } from './billing/billing.component';
 import { EventEmitter } from 'events';
+import { RetailersDetailsComponent } from './retailers-details/retailers-details.component';
+import { RetailersService } from './service/retailers.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { EventEmitter } from 'events';
     StockDetailsComponent,
     ViewProductsComponent,
     BillingComponent,
+    RetailersDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { EventEmitter } from 'events';
     EnrtyCompanyService,
     EntryCategoryService,
     EntryProductService,
+    RetailersService,
     EventEmitter,
   ],
   bootstrap: [AppComponent],

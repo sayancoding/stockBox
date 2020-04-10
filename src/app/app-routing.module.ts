@@ -9,6 +9,7 @@ import { EntryItemComponent } from './entrydetails/entry-item/entry-item.compone
 import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
 import { BillingComponent } from './billing/billing.component';
+import { RetailersDetailsComponent } from './retailers-details/retailers-details.component';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/home" },
@@ -22,31 +23,35 @@ const routes: Routes = [
         component: SummaryPannelComponent,
         children: [
           { path: "entryZone", component: EntryDetailsComponent },
-          { path: "stock", component: StockDetailsComponent }
-        ]
+          { path: "stock", component: StockDetailsComponent },
+        ],
       },
       {
         path: "company-entry",
-        component: EntryCompanyComponent
+        component: EntryCompanyComponent,
       },
       {
         path: "category-entry",
-        component: EntryCategoryComponent
+        component: EntryCategoryComponent,
       },
       {
         path: "product-entry",
-        component: EntryItemComponent
+        component: EntryItemComponent,
       },
       {
         path: "products-view",
-        component: ViewProductsComponent
+        component: ViewProductsComponent,
       },
       {
         path: "billing",
-        component: BillingComponent
-      }
-    ]
-  }
+        component: BillingComponent,
+      },
+      {
+        path: "retailers-entry",
+        component: RetailersDetailsComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({

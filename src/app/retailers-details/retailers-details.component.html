@@ -1,0 +1,123 @@
+<div class="mt-4 ml-1">
+  <div class="absolute" id="loader" *ngIf="showSpinner">
+    <app-spinner></app-spinner>
+  </div>
+
+  <div class="text-2xl my-2">
+    Our Retailer Details
+  </div>
+  <div>
+    <form [formGroup]="entryRetailers" (ngSubmit)="onSubmit()">
+      <input
+        placeholder="Retailer name.."
+        class="block bg-gray-100 my-3 h-10 px-2 rounded-sm"
+        formControlName="retailerName"
+        id="retailerName"
+      />
+      <p
+        class="error"
+        *ngIf="entryRetailers.get('retailerName').errors?.required"
+      >
+        Retailers name required !
+      </p>
+      <p
+        class="error"
+        *ngIf="entryRetailers.get('retailerName').errors?.pattern"
+      >
+        need correct name !
+      </p>
+
+      <input
+        placeholder="Retailer address.."
+        class="block bg-gray-100 my-3 h-10 px-2 rounded-sm"
+        formControlName="retailerAddress"
+        id="retailerAddress"
+      />
+      <p class="error" *ngIf="entryRetailers.get('retailerAddress').errors?.required">Address required !</p>
+
+      <input
+        placeholder="Contact No.."
+        class="block bg-gray-100 my-3 h-10 px-2 rounded-sm"
+        formControlName="retailerContact"
+        id="retailerContact"
+      />
+      <p
+        class="error"
+        *ngIf="entryRetailers.get('retailerContact').errors?.required"
+      >
+        Contact required !
+      </p>
+      <p
+        class="error"
+        *ngIf="entryRetailers.get('retailerContact').errors?.pattern"
+      >
+        need correct number !
+      </p>
+      <p
+        class="error"
+        *ngIf="entryRetailers.get('retailerContact').errors?.minlength"
+      >
+        should be minimum 10 !
+      </p>
+
+      <input
+        [disabled]="!entryRetailers.valid"
+        type="submit"
+        class="bg-indigo-700 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-lg hover:shadow"
+        value="Store"
+      />
+    </form>
+  </div>
+</div>
+<!-- <div class="bg-img container px-8">
+  <img src="../../../assets/undraw_add_file_4gfw.svg" class="" width="30%" height="30%"  alt="">
+</div> -->
+<!-- <div class="container">
+  <div class="container pt-4">
+    <input
+      type="text"
+      [(ngModel)]="term"
+      placeholder="Search companies.."
+      class="bg-gray-100 px-2 py-2 rounded my-2"
+      id="searchCompany"
+    />
+    <div class="table-box">
+
+    <table>
+      <thead>
+        <tr class="">
+          <th
+            class="text-center w-1/4 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+          >
+            Company Name
+          </th>
+          <th class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2">
+            Address
+          </th>
+          <th
+            class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2"
+          >
+            Contact No
+          </th>
+          <th
+            class="text-center w-1/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+          >
+            Remove
+          </th>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr *ngFor="let item of companies | filter: term">
+          <td class="text-center border-2 py-1">{{ item.name | uppercase }}</td>
+          <td class="text-center border-2 py-1">
+            {{ item.address | uppercase }}
+          </td>
+          <td class="text-center border-2 py-1">{{ item.contact }}</td>
+          <td class="text-center border-2 py-1 text-red-600 cursor-pointer" (click)="deleteComp($event,item)"><fa name="trash"></fa></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  
+</div> -->
