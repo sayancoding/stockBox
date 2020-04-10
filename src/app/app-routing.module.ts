@@ -10,6 +10,9 @@ import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { ViewProductsComponent } from './stockDetails/view-products/view-products.component';
 import { BillingComponent } from './billing/billing.component';
 import { RetailersDetailsComponent } from './retailers-details/retailers-details.component';
+import { DebitCreditComponent } from './debit-credit/debit-credit.component';
+import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.component';
+import { NewCustomerComponent } from './debit-credit/new-customer/new-customer.component';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/home" },
@@ -23,7 +26,8 @@ const routes: Routes = [
         component: SummaryPannelComponent,
         children: [
           { path: "entryZone", component: EntryDetailsComponent },
-          { path: "stock", component: StockDetailsComponent },
+          { path: "debit-credit", component: DebitCreditComponent },
+          { path: "stock", component: StockDetailsComponent }
         ],
       },
       {
@@ -49,6 +53,14 @@ const routes: Routes = [
       {
         path: "retailers-entry",
         component: RetailersDetailsComponent,
+      },
+      {
+        path: "new-debit-credit",
+        component: NewCustomerComponent,
+      },
+      {
+        path: "old-debit-credit",
+        component: OldCustomerComponent,
       },
     ],
   },

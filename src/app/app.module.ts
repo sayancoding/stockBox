@@ -26,6 +26,9 @@ import { BillingComponent } from './billing/billing.component';
 import { EventEmitter } from 'events';
 import { RetailersDetailsComponent } from './retailers-details/retailers-details.component';
 import { RetailersService } from './service/retailers.service';
+import { DebitCreditComponent } from './debit-credit/debit-credit.component';
+import { NewCustomerComponent } from './debit-credit/new-customer/new-customer.component';
+import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { RetailersService } from './service/retailers.service';
     ViewProductsComponent,
     BillingComponent,
     RetailersDetailsComponent,
+    DebitCreditComponent,
+    NewCustomerComponent,
+    OldCustomerComponent,
   ],
   imports: [
     BrowserModule,

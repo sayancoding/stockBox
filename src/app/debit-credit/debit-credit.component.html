@@ -1,0 +1,23 @@
+<div class="text-3xl ml-2 mt-8 text-gray-600">
+  Choose Debit-Credit as your 🙋‍♀️
+</div>
+<div class="flex flex-wrap mt-2">
+  <a [routerLink]="[ '/home/new-debit-credit' ]">
+    <div class="bg-gray-100 text-left shadow-sm text-indigo-700 hover:text-indigo-800 flex rounded-full justify-evenly px-4 py-4 m-2">
+      <p class="text-xl px-1"><fa name="tag"></fa></p>
+      <p class="pt-1">New Customer</p>
+    </div>
+  </a>
+  <a [routerLink]="[ '/home/old-debit-credit' ]">
+    <div class="bg-gray-100 text-left shadow-sm text-indigo-700 flex rounded-full hover:text-indigo-800 justify-evenly px-4 py-4 m-2">
+      <p class="text-xl px-1"><fa name="user"></fa></p>
+      <p class="pt-1">Old Customer</p>
+    </div>
+  </a>
+  <a [routerLink]="[ '/home/product-entry' ]">
+    <div class="bg-gray-100 text-left shadow-sm text-indigo-700 flex rounded-full hover:text-indigo-800 justify-evenly px-4 py-4 m-2">
+      <p class="text-xl px-1"><fa name="book"></fa></p>
+      <p class="pt-1">D/C Booklet</p>
+    </div>
+  </a>
+</div>
