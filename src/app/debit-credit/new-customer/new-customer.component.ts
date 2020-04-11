@@ -47,6 +47,7 @@ export class NewCustomerComponent implements OnInit {
       ],
     };
     console.log(this.currCustomer);
+    this.newCredit.reset();
   }
 
   doCalc() {
