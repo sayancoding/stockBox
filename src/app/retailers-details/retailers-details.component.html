@@ -59,7 +59,20 @@
       >
         should be minimum 10 !
       </p>
-
+      <div class="w-full md:w-1/3 mr-2">
+          <input
+            type="text"
+            placeholder="Retailer GST or PAN No.."
+            class="block rounded bg-gray-100 my-3 px-2 py-3 w-full"
+            formControlName="gstOrPanNumber"
+          />
+          <p
+            class="error"
+            *ngIf="newCredit.get('categoryName').errors?.required"
+          >
+            Category required!
+          </p>
+        </div>
       <input
         [disabled]="!entryRetailers.valid"
         type="submit"

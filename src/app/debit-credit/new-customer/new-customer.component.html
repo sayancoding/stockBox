@@ -1,1 +1,123 @@
-<p>new-customer works!</p>
+<div class="">
+  <div class="text-2xl my-2">
+    New Credit Record 🤓
+  </div>
+  <div>
+    <form [formGroup]="newCredit" (ngSubmit)="onSubmit()">
+      <div class="flex flex-wrap">
+        <div class="w-full md:w-1/3 mr-2">
+          <input
+            type="text"
+            placeholder="Customer Name.."
+            class="block rounded bg-gray-100 my-3 px-2 py-3 w-full"
+            formControlName="customerName"
+          />
+          <p
+            class="error"
+            *ngIf="newCredit.get('customerName').errors?.required"
+          >
+            Name required!
+          </p>
+        </div>
+        <div class="w-full md:w-1/5">
+          <input
+            type="text"
+            disabled
+            [(ngModel)]="today"
+            placeholder=""
+            class="block rounded cursor-not-allowed bg-gray-100 my-3 px-2 py-3 w-full"
+            formControlName="date"
+          />
+        </div>
+      </div>
+      <div class="flex flex-wrap mb-1">
+        <div class="w-full md:w-1/3 mr-2">
+          <input
+            type="text"
+            placeholder="Customer Address.."
+            class="block rounded bg-gray-100 my-3 px-2 py-3 w-full"
+            formControlName="customerAddress"
+          />
+          <p
+            class="error"
+            *ngIf="newCredit.get('customerAddress').errors?.required"
+          >
+            Address required!
+          </p>
+        </div>
+        <div class="w-full md:w-1/3 mr-2">
+          <input
+            type="text"
+            placeholder="Customer Contact.."
+            class="block rounded bg-gray-100 my-3 px-2 py-3 w-full"
+            formControlName="customerContact"
+          />
+          <p
+            class="error"
+            *ngIf="newCredit.get('customerContact').errors?.required"
+          >
+            Contact required!
+          </p>
+        </div>
+        
+      </div>
+      <div class="flex flex-wrap">
+        <div class="w-full md:w-1/6 mr-2">
+          <input
+            type="text"
+            placeholder="Total Amount"
+            class="block rounded bg-gray-100 my-3 px-2 py-3 w-full"
+            formControlName="totalAmount"
+            [(ngModel)]="t"
+            (ngModelChange) = "doCalc()"
+          />
+          <p
+            class="error"
+            *ngIf="newCredit.get('totalAmount').errors?.required"
+          >
+            Category required!
+          </p>
+        </div>
+        <div class="w-full md:w-1/6 mr-2">
+          <input
+            type="text"
+            placeholder="Debit Amount"
+            class="block rounded bg-gray-100 my-3 px-2 py-3 w-full"
+            formControlName="debitAmount"
+            [(ngModel)]="d"
+            (ngModelChange) = "doCalc()"
+          />
+          <p
+            class="error"
+            *ngIf="newCredit.get('debitAmount').errors?.required"
+          >
+            Category required!
+          </p>
+        </div>
+        <div class="w-full md:w-1/6 mr-2">
+          <input
+            disabled
+            type="text"
+            placeholder="Credit Amount"
+            class="block rounded bg-gray-100 my-3 px-2 py-3 cursor-not-allowed w-full"
+            formControlName="creditAmount"
+            [(ngModel)]="c"
+          />
+          <p
+            class="error"
+            *ngIf="newCredit.get('creditAmount').errors?.required"
+          >
+            Category required!
+          </p>
+        </div>
+
+      </div>
+      <input
+        [disabled]="!newCredit.valid"
+        type="submit"
+        class="bg-indigo-700 text-white px-4 py-1 mt-4 rounded shadow-lg hover:shadow-sm cursor-pointer"
+        value="Recorded"
+      />
+    </form>
+  </div>
+</div>

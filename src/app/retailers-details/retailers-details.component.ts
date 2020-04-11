@@ -21,6 +21,7 @@ export class RetailersDetailsComponent implements OnInit {
       Validators.pattern(/^[a-zA-Z]+$/),
     ]),
     retailerAddress: new FormControl(null, [Validators.required]),
+    gstOrPanNumber: new FormControl(null, []),
     retailerContact: new FormControl(null, [
       Validators.required,
       Validators.pattern(/^[0-9]\d*$/),
@@ -33,6 +34,7 @@ export class RetailersDetailsComponent implements OnInit {
       retailerName: this.entryRetailers.get("retailerName").value,
       retailerAddress: this.entryRetailers.get("retailerAddress").value,
       retailerContact: this.entryRetailers.get("retailerContact").value,
+      gstOrPanNumber: this.entryRetailers.get("gstOrPanNumber").value,
     };
     this.retailerService.addRetailer(this.currRetailer);
     setTimeout(() => {

@@ -3,4 +3,5 @@ export interface Retailer{
   retailerName?:string,
   retailerAddress?:string,
   retailerContact?:string,
+  gstOrPanNumber?:String
 }
