@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DebitDetails } from 'src/app/model/debitDetails.model';
+import { DebitCreditService } from 'src/app/service/debit-credit.service';
 
 @Component({
   selector: "app-new-customer",
@@ -15,7 +16,7 @@ export class NewCustomerComponent implements OnInit {
   c: number = 0;
   d: number = 0;
 
-  constructor() {}
+  constructor(private dcService:DebitCreditService) {}
 
   ngOnInit() {}
   newCredit = new FormGroup({
@@ -40,13 +41,16 @@ export class NewCustomerComponent implements OnInit {
       creditAmount: parseInt(this.newCredit.get("creditAmount").value),
       history: [
         {
+          date: new Date().toDateString(),
           totalAmount: parseInt(this.newCredit.get("totalAmount").value),
           debitAmount: parseInt(this.newCredit.get("debitAmount").value),
           creditAmount: parseInt(this.newCredit.get("creditAmount").value),
         },
       ],
     };
+    this.dcService.addRecord(this.currCustomer);
     console.log(this.currCustomer);
+    alert(`D_C recorded..`)
     this.newCredit.reset();
   }
 
