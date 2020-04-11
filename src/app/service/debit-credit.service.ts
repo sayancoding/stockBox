@@ -41,4 +41,8 @@ export class DebitCreditService {
     this.debitCreditDoc = this.db.doc(`debitCredits/${dc.id}`);
     this.debitCreditDoc.delete();
   }
+  updateRecord(dc: DebitDetails) {
+    this.debitCreditDoc = this.db.doc(`debitCredits/${dc.id}`);
+    this.debitCreditDoc.update(dc);
+  }
 }
