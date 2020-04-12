@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve & ngtw watch",
+    "start": "ng serve --host 192.168.0.108 --port 4200 & ngtw watch",
     "build": "ngtw build --purge && ng build",
     "test": "ng test",
     "lint": "ng lint",
