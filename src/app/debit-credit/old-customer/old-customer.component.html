@@ -13,7 +13,6 @@
       <tr class="">  
           <th class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2">Name</th>
           <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">Contact No</th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Debit</th>
           <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Credit</th>
           <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Date</th>
           <th class="text-center w-2/12 rounded-r-md bg-indigo-700 text-white px-2 py-2">Action</th>
@@ -23,12 +22,12 @@
       <tr *ngFor="let item of debitsCredits | filter:term" >  
           <td class="text-center border-2 py-1 text-orange-500">{{item.customerName | uppercase }}</td>
           <td class="text-center border-2 py-1">{{item.customerContact | uppercase }}</td>
-          <td class="text-center border-2 py-1">{{item.debitAmount}}</td>
           <td class="text-center border-2 py-1 text-red-500">{{item.creditAmount}}</td>
           <td class="text-center border-2 py-1">{{item.date}}</td>
           <td class="text-center border-2 py-1">
             <div class="flex justify-evenly">
-              <fa name="trash" class="text-red-700 cursor-pointer hover:bg-red-200 px-2 py-1 rounded-full" (click)="deleteItem($event,item)"></fa>
+              <fa name="binoculars" class="text-blue-700 cursor-pointer hover:bg-blue-200 px-2 py-1 rounded-full" (click)="viewItem($event,item)"></fa>
+              <fa name="trash" class="text-red-700 cursor-pointer hover:bg-red-200 px-2 py-1 rounded-full" (click)="removeItem($event,item)"></fa>
               <fa name="pencil" class="text-green-800 cursor-pointer hover:bg-green-100 bg-green-200 px-2 py-1 rounded-full" (click)="toUpdateCredit($event,item)"></fa> 
             </div>
           </td>
