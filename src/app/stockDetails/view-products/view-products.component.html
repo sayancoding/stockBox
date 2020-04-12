@@ -6,67 +6,69 @@
     <div class="text-2xl my-2">
       Products View 🧐
     </div>
-    <input type="text" [(ngModel)]="term" placeholder="Search product.." class="bg-indigo-100 w-1/3 px-2 py-2 rounded my-2">
+    <input type="text" [(ngModel)]="term" placeholder="Search product.." class="bg-indigo-100 w-full md:w-1/3 px-2 py-2 rounded my-2">
   </div>
-  <table class="border-collapse">
-    <thead>
-      <tr class="">  
-          <th class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2">Product Name</th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Category</th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Company</th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Price</th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">GST(%)</th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Price(inc GST)</th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Quantity</th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Stock Price(inc GST)</th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Date</th>
-          <th class="text-center w-1/12 rounded-r-md bg-indigo-700 text-white px-2 py-2">Action</th>
-      </tr> 
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of products | filter:term" >  
-          <td class="text-center border-2 py-1 text-orange-500">{{item.productName | uppercase }}</td>
-          <td class="text-center border-2 py-1">{{item.productCategory | uppercase }}</td>
-          <td class="text-center border-2 py-1">{{item.productCompany | uppercase}}</td>
-          <td class="text-center border-2 py-1 text-red-500">{{item.productPrice}}</td>
-          <td class="text-center border-2 py-1">{{item.productGST}}</td>
-          <td class="text-center border-2 py-1 text-red-700">{{item.productTotalGSTPrice}}</td>
-          <td class="text-center border-2 py-1 text-indigo-700">{{item.productQuantity}}</td>
-          <td class="text-center border-2 py-1 text-red-800">{{item.productTotalPrice}}</td>
-          <td class="text-center border-2 py-1 text-gray-600">{{item.productDate}}</td>
-          <td class="text-center border-2 py-1">
-            <div class="flex justify-evenly">
-              <fa name="trash" class="text-red-700 cursor-pointer hover:bg-red-200 px-2 py-1 rounded-full" (click)="deleteItem($event,item)"></fa>
-              <fa name="pencil" class="text-green-800 cursor-pointer hover:bg-green-100 bg-green-200 px-2 py-1 rounded-full" (click)="toUpdateProduct($event,item)"></fa> 
-            </div>
-          </td>
-      </tr>  
-    </tbody>  
-</table>
+  <div class="table-box">
+    <table class="border-collapse">
+      <thead>
+        <tr class="">  
+            <th class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2">Product Name</th>
+            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Category</th>
+            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Company</th>
+            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Price</th>
+            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">GST(%)</th>
+            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Price(inc GST)</th>
+            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Quantity</th>
+            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Stock Price(inc GST)</th>
+            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Date</th>
+            <th class="text-center w-1/12 rounded-r-md bg-indigo-700 text-white px-2 py-2">Action</th>
+        </tr> 
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of products | filter:term" >  
+            <td class="text-center border-2 py-1 text-orange-500">{{item.productName | uppercase }}</td>
+            <td class="text-center border-2 py-1">{{item.productCategory | uppercase }}</td>
+            <td class="text-center border-2 py-1">{{item.productCompany | uppercase}}</td>
+            <td class="text-center border-2 py-1 text-red-500">{{item.productPrice}}</td>
+            <td class="text-center border-2 py-1">{{item.productGST}}</td>
+            <td class="text-center border-2 py-1 text-red-700">{{item.productTotalGSTPrice}}</td>
+            <td class="text-center border-2 py-1 text-indigo-700">{{item.productQuantity}}</td>
+            <td class="text-center border-2 py-1 text-red-800">{{item.productTotalPrice}}</td>
+            <td class="text-center border-2 py-1 text-gray-600">{{item.productDate}}</td>
+            <td class="text-center border-2 py-1">
+              <div class="flex justify-evenly">
+                <fa name="trash" class="text-red-700 cursor-pointer hover:bg-red-200 px-2 py-1 rounded-full" (click)="deleteItem($event,item)"></fa>
+                <fa name="pencil" class="text-green-800 cursor-pointer hover:bg-green-100 bg-green-200 px-2 py-1 rounded-full" (click)="toUpdateProduct($event,item)"></fa> 
+              </div>
+            </td>
+        </tr>  
+      </tbody>  
+  </table>
+  </div>
 
 <div *ngIf="updateStatus" class="shadow-lg p-3 mt-4">
   <div (click)="clearStatus()" class="text-orange-600 cursor-pointer">
     Close ⛔
   </div>
- <div class="flex">
-       <input  [(ngModel)]="productToUpdate.productName" disabled  type="text" class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-1/4 px-2 rounded-sm" placeholder="Product Name..">
-       <input  [(ngModel)]="productToUpdate.productCategory" disabled  type="text" class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-1/4 px-2 rounded-sm" placeholder="Product Name..">
-       <input  [(ngModel)]="productToUpdate.productCompany" disabled  type="text" class="block bg-gary-200 cursor-not-allowed my-3 h-10 mr-2 w-1/4 px-2 rounded-sm" placeholder="Product Name..">
+ <div class="flex md:flex-row flex-col">
+       <input  [(ngModel)]="productToUpdate.productName" disabled  type="text" class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-full md:w-1/4 px-2 rounded-sm" placeholder="Product Name..">
+       <input  [(ngModel)]="productToUpdate.productCategory" disabled  type="text" class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-full md:w-1/4 px-2 rounded-sm" placeholder="Product Name..">
+       <input  [(ngModel)]="productToUpdate.productCompany" disabled  type="text" class="block bg-gary-200 cursor-not-allowed my-3 h-10 mr-2 w-full md:w-1/4 px-2 rounded-sm" placeholder="Product Name..">
      </div>
-     <div class="flex flex-wrap justify-start my-3">
-      <input type="date" [(ngModel)]="productToUpdate.productDate" class="bg-yellow-200 w-1/5 mr-3 h-8 w-24 px-2 rounded-sm ">
-        <input  [(ngModel)]="productToUpdate.productQuantity" [(ngModel)]="quantity" (ngModelChange)="doCalculate($event)" type="number" class="bg-yellow-200 mr-3 h-8 w-24 px-2 rounded-sm" placeholder="Quantity..">
-        <input  [(ngModel)]="productToUpdate.productPrice" [(ngModel)]="price" (ngModelChange)="doCalculate($event)" type="number" class="bg-yellow-200 mr-3 h-8 w-1/6 px-2 rounded-sm" placeholder="Price..">
-        <input  [(ngModel)]="productToUpdate.productGST" [(ngModel)]="gst" (ngModelChange)="doCalculate($event)" type="number" class="bg-yellow-200 mr-3 h-8 w-24 px-2 rounded-sm" placeholder="GST(%)..">
+     <div class="flex md:flex-row flex-col justify-start my-3">
+      <input type="date" [(ngModel)]="productToUpdate.productDate" class="bg-yellow-200 my-1 w-full md:w-1/5 mr-3 h-8 w-24 px-2 rounded-sm ">
+        <input  [(ngModel)]="productToUpdate.productQuantity" [(ngModel)]="quantity" (ngModelChange)="doCalculate($event)" type="number" class="bg-yellow-200 my-1 mr-3 h-8 w-full md:w-24 px-2 rounded-sm" placeholder="Quantity..">
+        <input  [(ngModel)]="productToUpdate.productPrice" [(ngModel)]="price" (ngModelChange)="doCalculate($event)" type="number" class="bg-yellow-200 my-1 mr-3 h-8 w-full md:w-1/6 px-2 rounded-sm" placeholder="Price..">
+        <input  [(ngModel)]="productToUpdate.productGST" [(ngModel)]="gst" (ngModelChange)="doCalculate($event)" type="number" class="bg-yellow-200 my-1 mr-3 h-8 w-full md:w-24 px-2 rounded-sm" placeholder="GST(%)..">
       </div>
-      <div class="flex">
+      <div class="flex md:flex-row flex-col">
         <div class="mr-2">
           <label for="" class="mb-2"><p class="mb-1 text-xs">With GST Price</p> </label>
-          <input  [(ngModel)]='productToUpdate.productTotalGSTPrice' disabled type="number" class="text-gray-700 bg-orange-200 h-8 w-1/2 px-2 rounded-sm block" placeholder="GST Price">
+          <input  [(ngModel)]='productToUpdate.productTotalGSTPrice' disabled type="number" class="text-gray-700 bg-orange-200 h-8 w-full md:w-1/2 px-2 rounded-sm block" placeholder="GST Price">
         </div>
         <div class="mr-2">
           <label for="" class="mb-2"><p class="mb-1 mt-2 text-xs">Total stock Price (Inc. GST)</p> </label>
-          <input  [(ngModel)]='productToUpdate.productTotalPrice' disabled type="number" class="text-gray-700 bg-orange-200 h-8 w-1/2 px-2 rounded-sm block" placeholder="Price Total">
+          <input  [(ngModel)]='productToUpdate.productTotalPrice' disabled type="number" class="text-gray-700 bg-orange-200 h-8 w-full md:w-1/2 px-2 rounded-sm block" placeholder="Price Total">
         </div>
       </div>
       <input  type="button" (click)="onSubmit(productToUpdate)" class="bg-indigo-600 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg" value="Update" />
