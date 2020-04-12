@@ -19,7 +19,7 @@ table th{
   padding-top: 8rem;
   cursor: no-drop;
 }
-input[type="disabled"]
+input[type="submit"]:disabled
 {
   background: rgb(226, 226, 226);
   cursor: not-allowed  ;

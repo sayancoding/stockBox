@@ -165,6 +165,7 @@
         />
       </div>
       <input
+      [disabled]="!billing.valid"
         type="submit"
         value="Proceed"
         class="px-2 py-1 bg-indigo-700 text-white rounded cursor-pointer inline-block"

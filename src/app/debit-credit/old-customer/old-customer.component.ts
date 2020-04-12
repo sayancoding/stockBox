@@ -109,6 +109,7 @@ export class OldCustomerComponent implements OnInit {
   }
 
   historyViewPdf(data) {
+    this.clearStatus();
     const doc = new jsPDF();
 
     doc.setFontSize(10);
@@ -133,6 +134,7 @@ export class OldCustomerComponent implements OnInit {
   }
 
   removeItem($event, item){
+    this.clearStatus();
     this.dcService.removeRecord(item);
   }
 }
