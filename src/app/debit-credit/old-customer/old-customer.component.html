@@ -1,57 +1,154 @@
 <div class="absolute w-9/12 h-screen" id="loader" *ngIf="showSpinner">
   <app-spinner></app-spinner>
-</div> 
+</div>
 <div class="container mt-8 ml-6">
   <div class="container">
     <div class="text-2xl my-2">
       Old Customer 🤠
     </div>
-    <input type="text" [(ngModel)]="term" placeholder="Customer search.." class="bg-indigo-100 md:w-1/3 w-full px-2 py-2 rounded my-2">
+    <input
+      type="text"
+      [(ngModel)]="term"
+      placeholder="Customer search.."
+      class="bg-indigo-100 md:w-1/3 w-full px-2 py-2 rounded my-2"
+    />
   </div>
   <div class="table-box">
     <table class="border-collapse">
       <thead>
-        <tr class="">  
-            <th class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2">Name</th>
-            <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">Contact No</th>
-            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Credit</th>
-            <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">Date</th>
-            <th class="text-center w-2/12 rounded-r-md bg-indigo-700 text-white px-2 py-2">Action</th>
-        </tr> 
+        <tr class="">
+          <th
+            class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+          >
+            Name
+          </th>
+          <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">
+            Contact No
+          </th>
+          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">
+            Credit
+          </th>
+          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">
+            Date
+          </th>
+          <th
+            class="text-center w-2/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+          >
+            Action
+          </th>
+        </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of debitsCredits | filter:term" >  
-            <td class="text-center border-2 py-1 text-orange-500">{{item.customerName | uppercase }}</td>
-            <td class="text-center border-2 py-1">{{item.customerContact | uppercase }}</td>
-            <td class="text-center border-2 py-1 text-red-500">{{item.creditAmount}}</td>
-            <td class="text-center border-2 py-1">{{item.date}}</td>
-            <td class="text-center border-2 py-1">
-              <div class="flex justify-evenly">
-                <fa name="binoculars" class="text-blue-700 cursor-pointer hover:bg-blue-200 px-2 py-1 rounded-full" (click)="viewItem($event,item)"></fa>
-                <fa name="trash" class="text-red-700 cursor-pointer hover:bg-red-200 px-2 py-1 rounded-full" (click)="removeItem($event,item)"></fa>
-                <fa name="pencil" class="text-green-800 cursor-pointer hover:bg-green-100 bg-green-200 px-2 py-1 rounded-full" (click)="toUpdateCredit($event,item)"></fa> 
-              </div>
-            </td>
-        </tr>  
-      </tbody>  
-  </table>
+        <tr *ngFor="let item of debitsCredits | filter: term">
+          <td class="text-center border-2 py-1 text-orange-500">
+            {{ item.customerName | uppercase }}
+          </td>
+          <td class="text-center border-2 py-1">
+            {{ item.customerContact | uppercase }}
+          </td>
+          <td class="text-center border-2 py-1 text-red-500">
+            {{ item.creditAmount }}
+          </td>
+          <td class="text-center border-2 py-1">{{ item.date }}</td>
+          <td class="text-center border-2 py-1">
+            <div class="flex justify-evenly">
+              <fa
+                name="binoculars"
+                class="text-blue-700 cursor-pointer hover:bg-blue-200 px-2 py-1 rounded-full"
+                (click)="viewItem($event, item)"
+              ></fa>
+              <fa
+                name="trash"
+                class="text-red-700 cursor-pointer hover:bg-red-200 px-2 py-1 rounded-full"
+                (click)="removeItem($event, item)"
+              ></fa>
+              <fa
+                name="pencil"
+                class="text-green-800 cursor-pointer hover:bg-green-100 bg-green-200 px-2 py-1 rounded-full"
+                (click)="toUpdateCredit($event, item)"
+              ></fa>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-<div *ngIf="updateStatus" class="shadow-lg p-3 mt-4 w-10/12">
-  <div (click)="clearStatus()" class="text-orange-600 cursor-pointer">
-    Close ⛔
-  </div>
- <div class="flex md:flex-row flex-col">
-       <input  [(ngModel)]="curDate" disabled  type="text" class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-full md:w-1/4 px-2 rounded-sm" placeholder="Date">
-       <input  [(ngModel)]="previousCredit" disabled  type="text" class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-full md:w-1/4 px-2 rounded-sm" placeholder="total credit">
-       <input  [(ngModel)]="totalCredit" disabled  type="text" class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-full md:w-1/4 px-2 rounded-sm" placeholder="total credit">
-     </div>
-     <div class="flex flex-col md:flex-row justify-start my-3">
-        <input  [(ngModel)]="newCredit" [(ngModel)]="newCredit" (ngModelChange)="doCalculate($event)" type="text" class="bg-yellow-200 my-1 mr-3 h-8 w-32 px-2 rounded-sm" placeholder="new debit">
-        <input  [(ngModel)]="debit" [(ngModel)]="debit" (ngModelChange)="doCalculate($event)" type="text" class="bg-yellow-200 my-1 mr-3 h-8 w-32 md:w-1/6 px-2 rounded-sm" placeholder="debit">
-        <input  [(ngModel)]="credit" type="text" class="bg-yellow-200 mr-3 h-8 w-32 px-2 my-1 rounded-sm" placeholder="credit">
+  <div *ngIf="updateStatus" class="shadow-lg p-3 mt-4 w-10/12">
+    <div (click)="clearStatus()" class="text-orange-600 cursor-pointer">
+      Close ⛔
+    </div>
+    <div class="flex md:flex-row flex-col">
+      <input
+        [(ngModel)]="curDate"
+        disabled
+        type="text"
+        class="block bg-gray-200 cursor-not-allowed my-3 h-10 mr-2 w-full md:w-1/4 px-2 rounded-sm"
+        placeholder="Date"
+      />
+    </div>
+
+    <div class="flex md:flex-row flex-col">
+      <div class="w-full md:w-1/4 mr-2">
+        <p>Previous Credit</p>
+        <input
+          [(ngModel)]="previousCredit"
+          disabled
+          type="text"
+          class="block bg-gray-200 cursor-not-allowed my-3 h-10 w-full rounded-sm"
+          placeholder="total credit"
+        />
       </div>
-      <input  type="button" (click)="onSubmit($event)" class="bg-indigo-600 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg" value="Update" />
-</div>
+      <div class="w-full md:w-1/4">
+        <p>Credit Sum</p>
+        <input
+          [(ngModel)]="totalCredit"
+          disabled
+          type="text"
+          class="block bg-gray-200 cursor-not-allowed my-3 h-10 w-full px-2 rounded-sm"
+          placeholder="total credit"
+        />
+      </div>
+    </div>
 
+    <div class="flex flex-col md:flex-row justify-start my-3">
+      <div class="w-32 mr-3">
+        <p>Today's Credit</p>
+        <input
+          [(ngModel)]="newCredit"
+          [(ngModel)]="newCredit"
+          (ngModelChange)="doCalculate($event)"
+          type="text"
+          class="bg-yellow-200 my-1 h-8 w-full px-2 rounded-sm"
+          placeholder="new debit"
+        />
+      </div>
+      <div class="w-32 md:w-1/6 mr-3">
+        <p>Pay Now</p>
+        <input
+          [(ngModel)]="debit"
+          [(ngModel)]="debit"
+          (ngModelChange)="doCalculate($event)"
+          type="text"
+          class="bg-yellow-200 my-1 h-8 w-full px-2 rounded-sm"
+          placeholder="debit"
+        />
+      </div>
+      <div class="w-32 mr-3">
+        <p>Due Amount</p>
+        <input
+          [(ngModel)]="credit"
+          type="text"
+          class="bg-yellow-200 mr-3 h-8 w-full px-2 my-1 rounded-sm"
+          placeholder="credit"
+        />
+      </div>
+    </div>
+    <input
+      type="button"
+      (click)="onSubmit($event)"
+      class="bg-indigo-600 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg"
+      value="Update"
+    />
+  </div>
 </div>
