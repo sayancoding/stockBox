@@ -29,6 +29,7 @@ import { RetailersService } from './service/retailers.service';
 import { DebitCreditComponent } from './debit-credit/debit-credit.component';
 import { NewCustomerComponent } from './debit-credit/new-customer/new-customer.component';
 import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.component';
+import { OutletComponent } from './outlet/outlet.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.c
     DebitCreditComponent,
     NewCustomerComponent,
     OldCustomerComponent,
+    OutletComponent,
   ],
   imports: [
     BrowserModule,
