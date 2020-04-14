@@ -267,6 +267,20 @@ export class BillingComponent implements OnInit {
       doc.text("Contact No: 9474086909", 36, 25);
       doc.text("GST No: XXXXXXXXX", 36, 29);
 
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "bold");
+      doc.text(`Buyer's Name: ${this.bill.customerName}`,20,46);
+      doc.text(`Address: ${this.bill.customerAddress}`,20,51);
+      doc.text(`Mobile No: ${this.bill.customerContact}`,20,56);
+
+      doc.setFontSize(12);
+      doc.text(`Total Amount: ${this.bill.totalAmount}`, 138, 256);
+      doc.setFontSize(10);
+      doc.text(`Payable Amount: ${this.bill.payableAmount}`, 138, 262);
+      doc.text(`Due Amount: ${this.bill.dueAmount}`, 138, 266);
+
+      doc.text("Owner(VEW) Authentication...", 16, 266);
+
       doc.setLineWidth(0.1);
       doc.line(16, 40, 190, 40, 60);
 
@@ -276,7 +290,7 @@ export class BillingComponent implements OnInit {
       head: [["Item Name", "Price inc. GST", "Quantity", "Total Price"]],
       body: this.cart_2d,
     });
-  //  doc.save(`${this.bill.receiptNo}`); 
+   doc.save(`${this.bill.receiptNo}`); 
   //  doc.output("datauristring");
    doc.setProperties({
      title: `${this.bill.receiptNo}.pdf`,
