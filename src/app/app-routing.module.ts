@@ -13,6 +13,7 @@ import { RetailersDetailsComponent } from './retailers-details/retailers-details
 import { DebitCreditComponent } from './debit-credit/debit-credit.component';
 import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.component';
 import { NewCustomerComponent } from './debit-credit/new-customer/new-customer.component';
+import { OutletComponent } from './outlet/outlet.component';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/home" },
@@ -27,7 +28,7 @@ const routes: Routes = [
         children: [
           { path: "entryZone", component: EntryDetailsComponent },
           { path: "debit-credit", component: DebitCreditComponent },
-          { path: "stock", component: StockDetailsComponent }
+          { path: "stock", component: StockDetailsComponent },
         ],
       },
       {
@@ -61,6 +62,10 @@ const routes: Routes = [
       {
         path: "old-debit-credit",
         component: OldCustomerComponent,
+      },
+      {
+        path: "outlets",
+        component: OutletComponent,
       },
     ],
   },
