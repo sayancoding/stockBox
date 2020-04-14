@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'inventory-app';
+  title = 'StockBox- Inventory Management SPA';
+  // title = 'inventory-app';
 }
