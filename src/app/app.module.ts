@@ -30,6 +30,7 @@ import { DebitCreditComponent } from './debit-credit/debit-credit.component';
 import { NewCustomerComponent } from './debit-credit/new-customer/new-customer.component';
 import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.component';
 import { OutletComponent } from './outlet/outlet.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { OutletComponent } from './outlet/outlet.component';
     NewCustomerComponent,
     OldCustomerComponent,
     OutletComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

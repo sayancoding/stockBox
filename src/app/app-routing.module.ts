@@ -14,6 +14,7 @@ import { DebitCreditComponent } from './debit-credit/debit-credit.component';
 import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.component';
 import { NewCustomerComponent } from './debit-credit/new-customer/new-customer.component';
 import { OutletComponent } from './outlet/outlet.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/home" },
@@ -69,6 +70,7 @@ const routes: Routes = [
       },
     ],
   },
+  {path:"**" , component:NotFoundComponent}
 ];
 
 @NgModule({
