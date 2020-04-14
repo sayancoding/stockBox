@@ -60,7 +60,10 @@ export class EntryCompanyComponent implements OnInit {
     if(!this.isMatch)
     this.addToFirebase();
     else
-    alert(`This company already in..`)
+    {
+      alert(`This company already in..`)
+      this.entryCompanyName.reset();
+    }
 
     // alert(`company details are stored 🤘`)
   }
