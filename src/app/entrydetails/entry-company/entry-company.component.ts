@@ -6,18 +6,18 @@ import { Company } from "src/app/model/enrtyCompany.model";
 @Component({
   selector: "app-entry-company",
   templateUrl: "./entry-company.component.html",
-  styleUrls: ["./entry-company.component.css"]
+  styleUrls: ["./entry-company.component.css"],
 })
 export class EntryCompanyComponent implements OnInit {
   companies: Company[];
   term: string;
-
-  showSpinner:boolean = true;
+  isMatch:boolean = false;
+  showSpinner: boolean = true;
 
   constructor(private _comanyNameService: EnrtyCompanyService) {}
   getCompanyName() {
     this.showSpinner = true;
-    this._comanyNameService.getCompanyName().subscribe(cmp => {
+    this._comanyNameService.getCompanyName().subscribe((cmp) => {
       this.companies = cmp;
       setTimeout(() => {
         this.showSpinner = false;
@@ -32,23 +32,35 @@ export class EntryCompanyComponent implements OnInit {
   entryCompanyName = new FormGroup({
     companyName: new FormControl(null, [
       Validators.required,
-      Validators.pattern(/^[a-zA-Z]+$/)
+      Validators.pattern(/^[a-zA-Z]+$/),
     ]),
     companyAddress: new FormControl(null, [Validators.required]),
     companyContact: new FormControl(null, [
       Validators.required,
       Validators.pattern(/^[0-9]\d*$/),
-      Validators.minLength(10)
-    ])
+      Validators.minLength(10),
+    ]),
   });
 
   onSubmit() {
     console.log({
       name: this.entryCompanyName.get("companyName").value,
       address: this.entryCompanyName.get("companyAddress").value,
-      contact: this.entryCompanyName.get("companyContact").value
+      contact: this.entryCompanyName.get("companyContact").value,
     });
+    for (let i = 0; i < this.companies.length; i++) {
+      if (
+        (this.entryCompanyName.get("companyName").value) ===
+        unescape(this.companies[i].name)
+      )
+        this.isMatch = true;
+        break;
+    }
+
+    if(!this.isMatch)
     this.addToFirebase();
+    else
+    alert(`This company already in..`)
 
     // alert(`company details are stored 🤘`)
   }
@@ -56,7 +68,7 @@ export class EntryCompanyComponent implements OnInit {
     this._comanyNameService.addCompany({
       name: this.entryCompanyName.get("companyName").value,
       address: this.entryCompanyName.get("companyAddress").value,
-      contact: this.entryCompanyName.get("companyContact").value
+      contact: this.entryCompanyName.get("companyContact").value,
     });
 
     this.getCompanyName();

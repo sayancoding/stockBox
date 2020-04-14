@@ -12,6 +12,7 @@ export class EntryCategoryComponent implements OnInit {
   categories: Category[];
   term: string;
   showSpinner:boolean = true;
+  
   constructor(private _categoryNameService: EntryCategoryService) {
     this.showSpinner = true;
     this._categoryNameService.getCategoriesName().subscribe(cat => {
