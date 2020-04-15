@@ -1,6 +1,13 @@
-# InventoryApp
+# StockBox - Inventory SPA
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+
+
+![image](screen.png)
+
+### 💻🤓
+It's developed using `angular 8` and design with `tailwind`
+and data deals with `firebase`
 
 ## Development server
 
