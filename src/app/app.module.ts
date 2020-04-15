@@ -13,7 +13,7 @@ import { EntryDetailsComponent } from "./entrydetails/entryDetails.component";
 import { EntryCompanyComponent } from "./entrydetails/entry-company/entry-company.component";
 import { EntryCategoryComponent } from "./entrydetails/entry-category/entry-category.component";
 import { EntryItemComponent } from "./entrydetails/entry-item/entry-item.component";
-import { environment } from "../environments/environment";
+import { environment } from "../environments/environment.prod";
 import { EnrtyCompanyService } from "./service/enrty-company.service";
 import { HomeComponent } from "./home/home.component";
 import { SummaryPannelComponent } from "./summary-pannel/summary-pannel.component";
