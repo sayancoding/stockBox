@@ -10,7 +10,7 @@ import { Product } from "src/app/model/entryProduct.model";
 export class ViewProductsComponent implements OnInit {
   products: Product[];
   public productToUpdate: Product;
-
+  term:string;
   name: string;
 
   updateStatus: boolean = false;

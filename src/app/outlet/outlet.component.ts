@@ -9,7 +9,8 @@ import { RetailersService } from '../service/retailers.service';
 })
 export class OutletComponent implements OnInit {
   retailers: Retailer[];
-  showSpinner:boolean = true;
+  showSpinner: boolean = true;
+  term: string;
   constructor(private retailerService: RetailersService) {
     this.retailerService.getRetailers().subscribe((ret) => {
       console.log(ret);
