@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import {AngularFireAuthModule} from "@angular/fire/auth"
 
 import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
@@ -31,6 +32,7 @@ import { NewCustomerComponent } from './debit-credit/new-customer/new-customer.c
 import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.component';
 import { OutletComponent } from './outlet/outlet.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthService } from "./service/auth.service";
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFireModule.initializeApp(environment.firebaseConfig, "inventory"),
     AngularFirestoreModule,
     AngularFontAwesomeModule,
+    AngularFireAuthModule,
     Ng2SearchPipeModule,
   ],
   providers: [
@@ -67,6 +70,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     EntryCategoryService,
     EntryProductService,
     RetailersService,
+    AuthService,
     EventEmitter,
   ],
   bootstrap: [AppComponent],
