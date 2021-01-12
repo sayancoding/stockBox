@@ -15,9 +15,11 @@ import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.c
 import { NewCustomerComponent } from './debit-credit/new-customer/new-customer.component';
 import { OutletComponent } from './outlet/outlet.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "/home" },
+  { path: "", pathMatch: "full", redirectTo: "/auth" },
+  {path:"auth",component:AuthComponent},
   {
     path: "home",
     component: HomeComponent,

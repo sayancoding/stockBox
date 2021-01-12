@@ -33,6 +33,7 @@ import { OldCustomerComponent } from './debit-credit/old-customer/old-customer.c
 import { OutletComponent } from './outlet/outlet.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthService } from "./service/auth.service";
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AuthService } from "./service/auth.service";
     OldCustomerComponent,
     OutletComponent,
     NotFoundComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
