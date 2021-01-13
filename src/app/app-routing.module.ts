@@ -1,7 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { EntryDetailsComponent } from './entrydetails/entrydetails.component'
+import { EntryDetailsComponent } from './entrydetails/entryDetails.component'
 import { SummaryPannelComponent } from './summary-pannel/summary-pannel.component';
 import { EntryCompanyComponent } from './entrydetails/entry-company/entry-company.component';
 import { EntryCategoryComponent } from './entrydetails/entry-category/entry-category.component';
