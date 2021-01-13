@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@babel/preset-env": "7.5.5",
     "@firebase/database": "^0.5.24",
     "@firebase/firestore": "^1.13.0",
     "angular-font-awesome": "^3.1.2",
@@ -31,11 +32,11 @@
     "jquery": "^3.4.1",
     "jspdf": "^1.5.3",
     "jspdf-autotable": "^3.3.2",
+    "ng-tailwindcss": "^2.3.2",
     "ng2-search-filter": "^0.5.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1",
-    "@babel/preset-env": "7.5.5"
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.21",
