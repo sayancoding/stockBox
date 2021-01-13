@@ -1,11 +1,35 @@
-<div class="flex justify-center text-center flex-col my-10">
-    <p class=" text-indigo-700" style="font-size: 3rem;">Stock Box</p>
-    <p class="italic text-gray-700">"Manage and Maintain your products and customer with ease"</p>
-</div>
-<div class="text-center" *ngIf="!hashName">
-    <input type="text" #businessName placeholder="Write your business name.." class="border-b-2 outline-none text-xl px-4 text-center py-2 sm:w-2/5" >
-    <br><button class="my-5 bg-indigo-700 text-white rounded cursor-pointer px-4 py-2 focus:shadow-lg" (click)="checkName(businessName)">Let's Go</button>
-</div>
-<div class="text-center" *ngIf="hashName">
-    <button class="my-5 bg-red-600 text-white rounded cursor-pointer px-4 py-2 focus:shadow-lg" (click)="signIn()">Sign in With Google</button>
+<div class="main">
+
+    <div class="flex justify-center text-center flex-col mb-10 pt-10">
+      <p class="text-indigo-700" style="font-size: 3rem">Stock Box</p>
+      <p class="italic text-gray-700">
+        "Manage and Maintain your products and customer with ease"
+      </p>
+    </div>
+    <div class="text-center" *ngIf="!hashName">
+      <input
+        type="text"
+        #businessName
+        placeholder="Write your business name.."
+        class="border-b-2 outline-none text-xl px-4 text-center py-2 sm:w-2/5"
+      />
+      <br /><button
+        class="my-5 bg-indigo-700 shadow-md text-white rounded cursor-pointer px-4 py-2 focus:shadow-lg"
+        (click)="checkName(businessName)"
+      >
+        Make account
+      </button>
+    </div>
+    <div class="text-center" *ngIf="hashName">
+      <button
+        class="my-5 bg-red-600 text-white rounded cursor-pointer px-4 py-2 focus:shadow-lg"
+        (click)="signIn()"
+      >
+        Sign in With Google
+      </button>
+    </div>
+    <div class="text-center">
+      Already have account ? <span (click)="alreadySignIn()" class="text-indigo-800 cursor-pointer"> Sign in</span>
+    </div>
+
 </div>

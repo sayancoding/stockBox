@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,10 @@ import * as $ from 'jquery';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  businessName = ""
+  constructor(private authService:AuthService) { 
+    this.businessName = localStorage.getItem("businessName")
+  }
 
   ngOnInit() {
     $(document).ready(function(){

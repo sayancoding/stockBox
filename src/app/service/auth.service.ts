@@ -19,6 +19,7 @@ export class AuthService {
     private router: Router,
     private afs: AngularFirestore
   ) {
+    
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
@@ -36,8 +37,33 @@ export class AuthService {
     const credential = await this.afAuth.auth.signInWithPopup(provider);
     return this.updateUser({ ...credential.user, businessName: businessName });
   }
+  async alreadySignIn(){
+    const provider = new auth.GoogleAuthProvider();
+    this.afAuth.auth.signInWithPopup(provider).then(credential=>{
+      const userRef: AngularFirestoreDocument<User> = this.afs
+        .collection<User>("users")
+        .doc(credential.user.uid);
+      userRef.snapshotChanges().subscribe(data=>{
+        if(data.payload.exists){
+          localStorage.setItem("currUid", data.payload.id);
+          this.afs
+            .collection<User>("users")
+            .doc(credential.user.uid)
+            .valueChanges()
+            .subscribe((item: User) => {
+              localStorage.setItem("businessName", String(item.businessName));
+              this.router.navigate(["/", "home"]);
+            });
+        }
+      })
+
+    })
+    
+  }
   async signOut() {
     await this.afAuth.auth.signOut();
+    localStorage.removeItem("currUid");
+    localStorage.removeItem("businessName");
     return this.router.navigate(["/"]);
   }
   updateUser(user) {
