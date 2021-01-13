@@ -10,7 +10,7 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { EntryDetailsComponent } from "./entrydetails/entryDetails.component";
+import { EntryDetailsComponent } from "./entrydetails/entrydetails.component";
 import { EntryCompanyComponent } from "./entrydetails/entry-company/entry-company.component";
 import { EntryCategoryComponent } from "./entrydetails/entry-category/entry-category.component";
 import { EntryItemComponent } from "./entrydetails/entry-item/entry-item.component";
