@@ -22,7 +22,7 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
-          console.log(user)
+          console.log(user);
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -31,11 +31,10 @@ export class AuthService {
     );
   }
 
-  async signInWithGoogle() {
+  async signInWithGoogle(businessName) {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
-    // console.log(credential.user);
-    return this.updateUser(credential.user);
+    return this.updateUser({ ...credential.user, businessName: businessName });
   }
   async signOut() {
     await this.afAuth.auth.signOut();
@@ -45,7 +44,7 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<User> = this.afs
       .collection<User>("users")
       .doc(user.uid);
-    
+
     const data = {
       uid: user.uid,
       email: user.email,
@@ -53,15 +52,19 @@ export class AuthService {
       displayName: user.displayName,
       somethingCustom:
         user.somethingCustom == undefined ? "" : user.somethingCustom,
+      businessName:user.businessName == undefined? "" :user.businessName
     };
-    
-    console.log(data)
+
+    console.log(data);
     userRef.snapshotChanges().subscribe((prev) => {
-      if(!prev.payload.exists){
+      if (!prev.payload.exists) {
         userRef.set(data);
       }
       localStorage.removeItem("currUid");
-      localStorage.setItem("currUid",data.uid);
+      localStorage.removeItem("businessName");
+      localStorage.setItem("currUid", data.uid);
+      localStorage.setItem("businessName",data.businessName)
+      this.router.navigate(["/","home"]);
     });
   }
 }
