@@ -19,7 +19,7 @@ export class EnrtyCompanyService {
   companyDocu:AngularFirestoreDocument<Company>;
 
   constructor(public db: AngularFirestore) {
-    this.companiesCollection = this.db.collection<Company>("company");
+    this.companiesCollection = this.db.collection<Company>(`users/${localStorage.currUid}/company`);
     this.companies = this.companiesCollection.snapshotChanges().pipe(
       map(changes => {
         return changes.map(a => {

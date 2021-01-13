@@ -54,6 +54,8 @@ export class AuthService {
               localStorage.setItem("businessName", String(item.businessName));
               this.router.navigate(["/", "home"]);
             });
+        }else{
+          return alert("No such account exist. Don't worry,make account.")
         }
       })
 

@@ -13,7 +13,9 @@ export class EntryCategoryService {
   categoryDoc:AngularFirestoreDocument<Category>
 
   constructor(public db: AngularFirestore) {
-    this.categoryCollection = this.db.collection<Category>("category");
+    this.categoryCollection = this.db.collection<Category>(
+      `users/${localStorage.currUid}/category`
+    );
     this.categories = this.categoryCollection.snapshotChanges().pipe(
       map(changes => {
         return changes.map(a => {

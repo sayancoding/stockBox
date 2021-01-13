@@ -18,7 +18,7 @@ export class EntryProductService {
   productDoc: AngularFirestoreDocument<Product>;
 
   constructor(private db: AngularFirestore) {
-    this.productCollection = this.db.collection<Product>("products");
+    this.productCollection = this.db.collection<Product>(`users/${localStorage.currUid}/products`);
     this.products = this.productCollection.snapshotChanges().pipe(
       map(changes => {
         return changes.map(a => {

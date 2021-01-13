@@ -17,7 +17,7 @@ export class BillingService {
   billDoc: AngularFirestoreDocument<Bills>;
 
   constructor(private db: AngularFirestore) {
-    this.billCollection = this.db.collection<Bills>("bills");
+    this.billCollection = this.db.collection<Bills>(`users/${localStorage.currUid}/bills`);
     this.bills = this.billCollection.snapshotChanges().pipe(
       map((changes) => {
         return changes.map((a) => {

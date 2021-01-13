@@ -18,7 +18,7 @@ export class DebitCreditService {
 
   constructor(public db: AngularFirestore) {
     this.debitCreditsCollection = this.db.collection<DebitDetails>(
-      "debitCredits"
+      `users/${localStorage.currUid}/debitCredits`
     );
     this.debitCredits = this.debitCreditsCollection.snapshotChanges().pipe(
       map((changes) => {

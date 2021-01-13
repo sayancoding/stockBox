@@ -19,7 +19,7 @@ export class RetailersService {
   retailerDocu: AngularFirestoreDocument<Retailer>;
 
   constructor(public db: AngularFirestore) {
-    this.retailersCollection = this.db.collection<Retailer>("retailers");
+    this.retailersCollection = this.db.collection<Retailer>(`users/${localStorage.currUid}/retailers`);
     this.retailers = this.retailersCollection.snapshotChanges().pipe(
       map((changes) => {
         return changes.map((a) => {
