@@ -14,7 +14,12 @@ input.ng-touched.ng-invalid + p.error {
   transition: 1s ease-in-out;
 }
 
-
+.card{
+  background-color: rgba(255, 255, 255, 0.397);
+  border: solid 3px transparent;
+  backdrop-filter: blur(40px);
+  z-index: 99;
+}
 .table-box
 {
   width: 22rem;

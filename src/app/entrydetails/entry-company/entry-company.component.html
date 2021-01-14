@@ -63,7 +63,7 @@
       <input
         [disabled]="!entryCompanyName.valid"
         type="submit"
-        class="bg-indigo-700 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-lg hover:shadow"
+        class="card px-4 py-1 rounded mt-5 cursor-pointer shadow-lg hover:shadow"
         value="Store"
       />
     </form>
@@ -83,24 +83,24 @@
     />
     <div class="table-box">
 
-    <table>
+    <table class="card">
       <thead>
         <tr class="">
           <th
-            class="text-center w-1/4 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-1/4 rounded-l-md bg-red-400 text-black px-2 py-2"
           >
             Company Name
           </th>
-          <th class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2">
+          <th class="text-center w-1/4 bg-red-400 text-black px-2 py-2">
             Address
           </th>
           <th
-            class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-1/4 bg-red-400 text-black px-2 py-2"
           >
             Contact No
           </th>
           <th
-            class="text-center w-1/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-1/12 rounded-r-md bg-red-400 text-black px-2 py-2"
           >
             Remove
           </th>
@@ -113,7 +113,7 @@
             {{ item.address | uppercase }}
           </td>
           <td class="text-center border-2 py-1">{{ item.contact }}</td>
-          <td class="text-center border-2 py-1 text-red-600 cursor-pointer" (click)="deleteComp($event,item)"><fa name="trash"></fa></td>
+          <td class="text-center border-2 py-1 text-red-900 cursor-pointer" (click)="deleteComp($event,item)"><fa name="trash"></fa></td>
         </tr>
       </tbody>
     </table>

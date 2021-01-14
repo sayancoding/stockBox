@@ -2,13 +2,6 @@
 {
   position: relative;
 }
-.home
-{
-  background-image: url(../../assets/bg-flat.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
 
 .wrapper
 {
@@ -19,10 +12,19 @@
 {
   position: sticky;
   width: 280px;
-  height: 120vh;
-  background-color: rgba(239, 234, 255, 0.603);
+  /* height: 120vh; */
+  padding-bottom: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(40px);
+  z-index: 2;
   left: 0px;
   transition: 0.2s ease-in-out;
+}
+.card{
+  background-color: rgba(255, 255, 255, 0.397);
+  border: solid 3px transparent;
+  backdrop-filter: blur(40px);
+  z-index: 99;
 }
 .main-container{
   width: calc(100% - 280px);
@@ -35,9 +37,8 @@
 .navbar
 {
   display: flex;
-  padding:0 1rem 0 1rem ;
+  padding:0.8rem 1rem  0.8rem 1rem;
   justify-content: space-between;
-  background-color: #fff;
   position: relative;
 }
 
