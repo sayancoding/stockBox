@@ -3,7 +3,7 @@
 </div>
 
 <div
-  class="w-full h-full pl-64 pt-20 fixed rounded-md"
+  class="w-full h-full pl-64 pt-20 ml-1 sm:ml-24 fixed rounded-md"
   (click)="viewCart($event)"
   style="background-color: rgba(240, 240, 240, 0.363);"
   *ngIf="showCart"
@@ -36,7 +36,7 @@
   </div>
 </div>
 
-<div class="container mt-8 ml-6">
+<div class="container mt-8 ml-1 sm:ml-24">
   <div class="container">
     <div class="text-2xl my-2">
       Cart Your Favorite 🧐
@@ -58,19 +58,19 @@
       <thead>
         <tr class="">
           <th
-            class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-2/12 rounded-l-md bg-red-600 text-white px-2 py-2"
           >
             Product Name
           </th>
-          <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">
+          <th class="text-center w-2/12 bg-red-600 text-white px-2 py-2">
             Price
           </th>
-          <!-- <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">GST(%)</th> -->
-          <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">
+          <!-- <th class="text-center w-1/12 bg-red-600 text-white px-2 py-2">GST(%)</th> -->
+          <th class="text-center w-2/12 bg-red-600 text-white px-2 py-2">
             Price(inc GST)
           </th>
           <th
-            class="text-center w-2/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-2/12 rounded-r-md bg-red-600 text-white px-2 py-2"
           >
             Action
           </th>
@@ -78,28 +78,28 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of products | filter: term">
-          <td class="text-center border-2 py-1 text-orange-500">
+          <td class="text-center border-2 py-1 text-black">
             {{ item.productName | uppercase }}
           </td>
-          <td class="text-center border-2 py-1 text-red-500">
+          <td class="text-center border-2 py-1 text-black">
             <p class="text-sm">
               {{ item.productPrice }} ({{ item.productGST }})
             </p>
           </td>
-          <td class="text-center border-2 py-1 text-red-500">
+          <td class="text-center border-2 py-1 text-black">
             <p class="text-sm">{{ item.productTotalGSTPrice }}</p>
           </td>
           <td class="text-center border-2 py-1">
             <div class="flex align-middle my-1 justify-center pl-2">
               <p
-                class="text-lg text-red-500 py-1 px-1 hover:bg-red-200 rounded-full cursor-pointer"
+                class="text-lg text-black py-1 px-1 hover:bg-red-200 rounded-full cursor-pointer"
                 id="pluse"
               >
                 <fa name="plus" (click)="addProduct($event, item)"></fa>
               </p>
-              <p class="text-xl text-blue-500 px-1" id="count">0</p>
+              <p class="text-xl text-black px-1" id="count">0</p>
               <p
-                class="text-lg text-red-500 py-1 px-1 hover:bg-red-200 rounded-full cursor-pointer"
+                class="text-lg text-black py-1 px-1 hover:bg-red-200 rounded-full cursor-pointer"
                 id="minus"
                 (click)="removeProduct($event, item)"
               >
@@ -114,7 +114,7 @@
 
   <!-- billing form  -->
   
-  <div class="text-xl mt-4 text-gray-700">
+  <div class="text-xl mt-4 text-black">
     Billing Details
   </div>
   <div class="mt-6">

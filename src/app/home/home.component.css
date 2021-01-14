@@ -1,31 +1,33 @@
 .wrapper
 {
-  position: relative;
-}
-.home
-{
-  background-image: url(../../assets/bg-flat.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  /* position: relative; */
 }
 
-.wrapper
-{
-  display: flex;
-
-}
 .sidebar
 {
-  position: sticky;
+  position: absolute;
   width: 280px;
-  height: 120vh;
-  background-color: rgba(239, 234, 255, 0.603);
+  border-radius: 0 10px 10px 0 ;
+  padding-bottom: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(40px);
+  z-index: 2;
   left: 0px;
   transition: 0.2s ease-in-out;
 }
+@media only screen and (max-width: 768px){
+  .sidebar{
+    width: 300px;
+  }
+}
+.card{
+  background-color: rgba(255, 255, 255, 0.397);
+  border: solid 3px transparent;
+  backdrop-filter: blur(40px);
+  z-index: 99;
+}
 .main-container{
-  width: calc(100% - 280px);
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,9 +37,8 @@
 .navbar
 {
   display: flex;
-  padding:0 1rem 0 1rem ;
+  padding:0.8rem 1rem  0.8rem 1rem;
   justify-content: space-between;
-  background-color: #fff;
   position: relative;
 }
 

@@ -1,7 +1,7 @@
 <div class="absolute w-9/12 h-screen" id="loader" *ngIf="showSpinner">
   <app-spinner></app-spinner>
 </div>
-<div class="container mt-8 ml-6">
+<div class="container mt-8 ml-1 sm:ml-24">
   <div class="container">
     <div class="text-2xl my-2">
       Old Customer 🤠
@@ -14,25 +14,25 @@
     />
   </div>
   <div class="table-box">
-    <table class="border-collapse">
+    <table class="border-collapse card">
       <thead>
         <tr class="">
           <th
-            class="text-center w-2/12 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-2/12 rounded-l-md bg-red-600 text-white px-2 py-2"
           >
             Name
           </th>
-          <th class="text-center w-2/12 bg-indigo-700 text-white px-2 py-2">
+          <th class="text-center w-2/12 bg-red-600 text-white px-2 py-2">
             Contact No
           </th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">
+          <th class="text-center w-1/12 bg-red-600 text-white px-2 py-2">
             Credit
           </th>
-          <th class="text-center w-1/12 bg-indigo-700 text-white px-2 py-2">
+          <th class="text-center w-1/12 bg-red-600 text-white px-2 py-2">
             Date
           </th>
           <th
-            class="text-center w-2/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-2/12 rounded-r-md bg-red-600 text-white px-2 py-2"
           >
             Action
           </th>
@@ -40,13 +40,13 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of debitsCredits | filter: term">
-          <td class="text-center border-2 py-1 text-orange-500">
+          <td class="text-center border-2 py-1 text-black">
             {{ item.customerName | uppercase }}
           </td>
           <td class="text-center border-2 py-1">
             {{ item.customerContact | uppercase }}
           </td>
-          <td class="text-center border-2 py-1 text-red-500">
+          <td class="text-center border-2 py-1 text-black">
             {{ item.creditAmount }}
           </td>
           <td class="text-center border-2 py-1">{{ item.date }}</td>
@@ -54,17 +54,17 @@
             <div class="flex justify-evenly">
               <fa
                 name="binoculars"
-                class="text-blue-700 cursor-pointer hover:bg-blue-200 px-2 py-1 rounded-full"
+                class="text-black cursor-pointer hover:bg-blue-200 px-2 py-1 rounded-full"
                 (click)="viewItem($event, item)"
               ></fa>
               <fa
                 name="trash"
-                class="text-red-700 cursor-pointer hover:bg-red-200 px-2 py-1 rounded-full"
+                class="text-black cursor-pointer hover:bg-red-200 px-2 py-1 rounded-full"
                 (click)="removeItem($event, item)"
               ></fa>
               <fa
                 name="pencil"
-                class="text-green-800 cursor-pointer hover:bg-green-100 bg-green-200 px-2 py-1 rounded-full"
+                class="text-black cursor-pointer hover:bg-green-100 bg-green-200 px-2 py-1 rounded-full"
                 (click)="toUpdateCredit($event, item)"
               ></fa>
             </div>
@@ -75,7 +75,7 @@
   </div>
 
   <div *ngIf="updateStatus" class="shadow-lg p-3 mt-4 w-10/12">
-    <div (click)="clearStatus()" class="text-orange-600 cursor-pointer">
+    <div (click)="clearStatus()" class="text-black cursor-pointer">
       Close ⛔
     </div>
     <div class="flex md:flex-row flex-col">
@@ -147,7 +147,7 @@
     <input
       type="button"
       (click)="onSubmit($event)"
-      class="bg-indigo-600 text-white px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg"
+      class="card px-4 py-1 rounded-sm mt-5 cursor-pointer shadow-sm hover:shadow-lg"
       value="Update"
     />
   </div>

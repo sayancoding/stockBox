@@ -87,6 +87,8 @@ export class AuthService {
     userRef.snapshotChanges().subscribe((prev) => {
       if (!prev.payload.exists) {
         userRef.set(data);
+      }else{
+        return alert('You have already registered. Go to signin below.');
       }
       localStorage.removeItem("currUid");
       localStorage.removeItem("businessName");

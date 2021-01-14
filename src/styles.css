@@ -1,4 +1,5 @@
 html {
+<<<<<<< HEAD
   line-height: 1.15; 
   -webkit-text-size-adjust: 100%; 
 }
@@ -6,6 +7,23 @@ html {
 body {
   margin: 0;
 }
+=======
+  background: url("./assets/bodyBG.png") no-repeat center center fixed;
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers.
+ */
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+>>>>>>> auth1
 
 main {
   display: block;
