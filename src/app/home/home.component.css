@@ -1,24 +1,24 @@
 .wrapper
 {
-  position: relative;
+  /* position: relative; */
 }
 
-.wrapper
-{
-  display: flex;
-
-}
 .sidebar
 {
-  position: sticky;
+  position: absolute;
   width: 280px;
-  /* height: 120vh; */
+  border-radius: 0 10px 10px 0 ;
   padding-bottom: 12px;
   background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(40px);
   z-index: 2;
   left: 0px;
   transition: 0.2s ease-in-out;
+}
+@media only screen and (max-width: 768px){
+  .sidebar{
+    width: 300px;
+  }
 }
 .card{
   background-color: rgba(255, 255, 255, 0.397);
@@ -27,7 +27,7 @@
   z-index: 99;
 }
 .main-container{
-  width: calc(100% - 280px);
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;

@@ -9,6 +9,7 @@
  */
 
 html {
+  background: url("./assets/bodyBG.png") no-repeat center center fixed;
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -19,28 +20,6 @@ html {
 /**
  * Remove the margin in all browsers.
  */
-
-
-@media only screen and (min-width: 768px){
-body {
-  margin: 0;
-  /* background-image: linear-gradient(to top left, rgb(255, 165, 31), rgb(255, 152, 71), rgb(255, 139, 110), rgb(255, 125, 150), rgb(255, 112, 189), rgb(255, 99, 229), rgb(213, 88, 225), rgb(170, 76, 221), rgb(128, 65, 217), rgb(85, 54, 212), rgb(43, 42, 208), rgb(0, 31, 204));
-   */
-   background: url("./assets/bodyBG.png") no-repeat;
-   background-position: center;
-   background-size:cover;
-}
-}
-@media only screen and (max-width: 768px){
-  body {
-  margin: 0;
-  background-image: linear-gradient(to top left, rgb(255, 165, 31), rgb(255, 152, 71), rgb(255, 139, 110), rgb(255, 125, 150), rgb(255, 112, 189), rgb(255, 99, 229), rgb(213, 88, 225), rgb(170, 76, 221), rgb(128, 65, 217), rgb(85, 54, 212), rgb(43, 42, 208), rgb(0, 31, 204));
-   
-   /* background: url("./assets/bodyBG.png");
-   background-position: center;
-   background-size:cover; */
-}
-}
 
 /**
  * Render the `main` element consistently in IE.

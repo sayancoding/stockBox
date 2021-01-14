@@ -1,40 +1,40 @@
 <div class="absolute w-9/12 h-screen" id="loader" *ngIf="showSpinner">
   <app-spinner></app-spinner>
 </div> 
-<div class="container">
-  <div class="container pt-4">
+<div class="container ">
+  <div class="container">
     <input
       type="text"
       [(ngModel)]="term"
       placeholder="Search Outlet.."
-      class="bg-gray-100 px-2 py-2 rounded my-2"
+      class="bg-gray-100 px-2 py-2 sm:ml-20 rounded my-2"
       id="searchCompany"
     />
-    <div class="table-box">
+    <div class="table-box sm:ml-20 ">
 
-    <table>
+    <table class="card">
       <thead>
         <tr class="">
           <th
-            class="text-center w-1/4 rounded-l-md bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-1/4 rounded-l-md bg-red-600 text-white px-2 py-2"
           >
             Retailer's Name
           </th>
-          <th class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2">
+          <th class="text-center w-1/4 bg-red-600 text-white px-2 py-2">
             Address
           </th>
           <th
-            class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-1/4 bg-red-600 text-white px-2 py-2"
           >
             Contact No
           </th>
           <th
-            class="text-center w-1/4 bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-1/4 bg-red-600 text-white px-2 py-2"
           >
             GST/PAN
           </th>
           <th
-            class="text-center w-1/12 rounded-r-md bg-indigo-700 text-white px-2 py-2"
+            class="text-center w-1/12 rounded-r-md bg-red-600 text-white px-2 py-2"
           >
             Remove
           </th>

@@ -1,8 +1,10 @@
 .main{
-    background: url("../../assets/stockBg.jpg");
+    background-image: url("../../assets/stockBg.jpg");
     background-position:left;
     background-size: cover;
     background-repeat: no-repeat;
+    opacity: 0.8;
+    border-radius: 10px;
     width: 100%;
     height: 100vh;
 }

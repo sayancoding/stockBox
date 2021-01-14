@@ -1,7 +1,8 @@
  <div class="wrapper">
-  <div class="sidebar">
-    <a [routerLink]="['']">
-      <div class="text-black leading-loose font-bold text-center mt-4 text-2xl">
+  <div class="sidebar" *ngIf="!isHidden">
+    <p class="text-center pt-4 cursor-pointer" (click)="toggleBtn()"><fa name="angle-double-left" size="2x"></fa></p>
+    <a [routerLink]="['/home']">
+      <div class="text-black leading-loose font-bold text-center mt-2 text-2xl">
         StockBox
       </div>
     </a>
@@ -24,28 +25,28 @@
       </a>
       <a [routerLink]="['/home/company-entry']">
         <li
-          class="text-center list-none py-1 text-black hover:text-indigo-800 cursor-pointer"
+          class="text-center list-none py-1 text-black hover:text-red-700 cursor-pointer"
         >
           Company Details
         </li>
       </a>
       <a [routerLink]="['/home/category-entry']">
         <li
-          class="text-center list-none py-1 text-black hover:text-indigo-800 cursor-pointer"
+          class="text-center list-none py-1 text-black hover:text-red-700 cursor-pointer"
         >
           Category Details
         </li>
       </a>
       <a [routerLink]="['/home/product-entry']">
         <li
-          class="text-center list-none py-1 text-black hover:text-indigo-800 cursor-pointer"
+          class="text-center list-none py-1 text-black hover:text-red-700 cursor-pointer"
         >
           Product Details
         </li>
       </a>
       <a [routerLink]="['/home/retailers-entry']">
         <li
-          class="text-center list-none py-1 text-black hover:text-indigo-800 cursor-pointer"
+          class="text-center list-none py-1 text-black hover:text-red-700 cursor-pointer"
         >
           Retailer Details
         </li>
@@ -57,14 +58,14 @@
       </li>
       <a [routerLink]="['/home/new-debit-credit']">
         <li
-          class="text-center list-none py-1 text-black hover:text-indigo-800 cursor-pointer"
+          class="text-center list-none py-1 text-black hover:text-red-700 cursor-pointer"
         >
           New Customer
         </li>
       </a>
       <a [routerLink]="['/home/old-debit-credit']">
         <li
-          class="text-center list-none py-1 text-black hover:text-indigo-800 cursor-pointer"
+          class="text-center list-none py-1 text-black hover:text-red-700 cursor-pointer"
         >
           Old Customer
         </li>
@@ -81,14 +82,14 @@
       <li class="text-center list-none py-1 text-xl text-black">Stock</li>
       <a [routerLink]="['/home/products-view']">
         <li
-          class="text-center list-none py-1 text-black hover:text-indigo-800 cursor-pointer"
+          class="text-center list-none py-1 text-black hover:text-red-700 cursor-pointer"
         >
           View Products
         </li>
       </a>
       <a [routerLink]="['/home/billing']">
         <li
-          class="text-center list-none py-1 text-black hover:text-indigo-800 cursor-pointer"
+          class="text-center list-none py-1 text-black hover:text-red-700 cursor-pointer"
         >
           Billing out
         </li>
@@ -105,19 +106,21 @@
     <div class="">
       <div class="navbar">
         <p
-          id="toggle"
+          (click)="toggleBtn()"
           class="text-center text-white text-3xl cursor-pointer"
         >
           <fa name="bars"></fa>
         </p>
-        <p class="text-black pt-2">
-          {{ businessName }}
-          <span
+        <div class="flex">
+          <p class="text-black hidden sm:block pt-2">
+            {{ businessName }}
+          </p>
+          <p
             (click)="authService.signOut()"
             class="card text-black ml-4 py-2 rounded-md px-4 cursor-pointer"
-            >Sign Out</span
+            >Sign Out</p
           >
-        </p>
+        </div>
       </div>
       <div class="px-4">
         <router-outlet></router-outlet>
