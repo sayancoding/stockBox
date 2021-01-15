@@ -3,7 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
 
-![image](screen.png)
+![image](Stock_SS_1.png)
+![image](Stock_SS_0.png)
 
 ### 💻🤓
 It's developed using `angular 8` and design with `tailwind`
