@@ -30,7 +30,7 @@
     "firebase": "^7.12.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.3.2",
     "ng-tailwindcss": "^2.3.2",
     "ng2-search-filter": "^0.5.1",
